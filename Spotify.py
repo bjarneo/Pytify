@@ -17,6 +17,7 @@ class Spotify:
             if (key == limit):
                 break
             print '{0:3} {1:25} {2:30} {3:30}'.format(str(key + 1) + '.', song['artists'][0]['name'], song['name'], song['album']['name'])
+
             # Sleeps just for the sexy output
             time.sleep(0.03)
 
