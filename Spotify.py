@@ -20,9 +20,9 @@ class Spotify:
 
             print '{0:3} {1:25} {2:30} {3:30}'.format(
                 str(key + 1) + '.',
-                song['artists'][0]['name'],
-                song['name'],
-                song['album']['name']
+                song['artists'][0]['name'].encode('utf-8'),
+                song['name'].encode('utf-8'),
+                song['album']['name'].encode('utf-8')
             )
 
             # Sleeps just for the sexy output
