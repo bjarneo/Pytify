@@ -3,11 +3,11 @@ import time
 
 # Fetch songs with spotify api
 class Spotify:
-  url = 'https://ws.spotify.com/search/1/track.json?q='
+  _url = 'https://ws.spotify.com/search/1/track.json?q='
 
   # Get our data
   def __init__(self, query):
-    response = requests.get(self.url + query)
+    response = requests.get(self._url + query)
     self.data = response.json()
   
   # List all. Limit if needed
@@ -16,8 +16,9 @@ class Spotify:
       if (key == limit):
         break
 
-      print str(key + 1) + ' ' + song['artists'][0]['name'] + ' - ' + song['name'] + ' :: ' + song['album']['name']
-      time.sleep(0.03)
+      print str(key + 1) + '. ' + song['artists'][0]['name'] + ' - ' + song['name'] + ' :: ' + song['album']['name']
+      # Sleeps just for the sexy output
+      time.sleep(0.03) 
       
   # Debug
   def debug(self):
