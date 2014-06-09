@@ -1,6 +1,7 @@
 import requests
 import time
 
+
 # Fetch songs with spotify api
 class Spotify:
     _url = 'https://ws.spotify.com/search/1/track.json?q='
@@ -11,11 +12,11 @@ class Spotify:
         self.data = response.json()
 
     # List all. Limit if needed
-    def list(self, limit = 100):
+    def list(self, limit=100):
         print '{0:3} {1:25} {2:30} {3:30}'.format('#', 'Artist', 'Song', 'Album')
 
         for key, song in enumerate(self.data['tracks']):
-            if (key == limit):
+            if key == limit:
                 break
 
             print '{0:3} {1:25} {2:30} {3:30}'.format(

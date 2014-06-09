@@ -1,15 +1,13 @@
-import Spotify as stfy
+#!/usr//bin/env python
+import Spotify
 
-print 'What are you searching for?'
-search_input = raw_input()
 
-try:
-    if (search_input):
-        spotify = stfy.Spotify(search_input)
-        spotify.list(15)
-except Exception, e:
-    print e
+search_input = raw_input('What music are you searching for?\n')
+
+if search_input:
+    spotify = Spotify.Spotify(search_input)
+    spotify.list()
+else:
     print """
     You need to add an argument.
-    Example python Spotify.py artist or Spotify.py 'song name'
     """
