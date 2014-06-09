@@ -13,7 +13,7 @@ class Spotify:
 
     # List all. Limit if needed
     def list(self, limit=100):
-        space = '{0:3} {1:25} {2:30} {3:30}'
+        space = '{0:3} | {1:25} | {2:30} | {3:30}'
 
         print space.format('#', 'Artist', 'Song', 'Album')
         # Just to make it pwitty
