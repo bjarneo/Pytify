@@ -13,13 +13,22 @@ class Spotify:
 
     # List all. Limit if needed
     def list(self, limit=100):
-        print '{0:3} {1:25} {2:30} {3:30}'.format('#', 'Artist', 'Song', 'Album')
+        space = '{0:3} {1:25} {2:30} {3:30}'
+
+        print space.format('#', 'Artist', 'Song', 'Album')
+        # Just to make it pwitty
+        print space.format(
+            '---',
+            '-------------------------',
+            '------------------------------',
+            '------------------------------'
+        )
 
         for key, song in enumerate(self.data['tracks']):
             if key == limit:
                 break
 
-            print '{0:3} {1:25} {2:30} {3:30}'.format(
+            print space.format(
                 str(key + 1) + '.',
                 song['artists'][0]['name'].encode('utf-8'),
                 song['name'].encode('utf-8'),
