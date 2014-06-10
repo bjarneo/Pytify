@@ -3,6 +3,8 @@ PythonSpotify
 
 Search and start songs from command line.<br>
 
+(http://i57.tinypic.com/2i0ver4.png)
+
 ### Usage
 ```python
 # To start the app run this
