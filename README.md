@@ -11,7 +11,6 @@ Search and start songs from command line.<br>
 
 For quick link to this app add it to usr local bin. Ex:<br>
 sudo ln -s ~/Path/To/cli.py  /usr/local/bin/sptfy <br>
-sudo ln -s ~/Code/PythonSpotify/cli.py  /usr/local/bin/sptfy
 
 #### Usage is now
 ```python
