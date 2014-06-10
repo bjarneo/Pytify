@@ -1,13 +1,20 @@
 PythonSpotify
 =============
 
-Testing Spotify API with python as CLI app
+Search and start songs from command line.<br>
 
 ### Usage
 ```python
-python cli.py artist or song
+# To start the app run this
+./cli.py
 ```
-####Example: 
+
+For quick link to this app add it to usr local bin. Ex:<br>
+sudo ln -s ~/Path/To/cli.py  /usr/local/bin/sptfy <br>
+sudo ln -s ~/Code/PythonSpotify/cli.py  /usr/local/bin/sptfy
+
+#### Usage is now
 ```python
-python cli.py "Ensiferum - Eternal Wait"
+# To start the app run this
+sptfy
 ```

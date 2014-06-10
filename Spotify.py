@@ -1,5 +1,6 @@
 import requests
 import time
+from subprocess import call
 
 
 # Fetch songs with spotify api
@@ -13,6 +14,7 @@ class Spotify:
 
     # List all. Limit if needed
     def list(self, limit=100):
+        self.songs = {}
         space = '{0:3} | {1:25} | {2:30} | {3:30}'
 
         print space.format('#', 'Artist', 'Song', 'Album')
@@ -35,8 +37,14 @@ class Spotify:
                 song['album']['name'].encode('utf-8')
             )
 
+            # Save spotify uri for later use
+            self.songs[key + 1] = song['href']
+
             # Sleeps just for the sexy output
-            time.sleep(0.03)
+            time.sleep(0.01)
+
+    def listen(self, index):
+        call(['spotify', str(self.songs[index])])
 
     # Debug
     def debug(self):
