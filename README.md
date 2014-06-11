@@ -8,7 +8,7 @@ Search and start songs from command line.<br>
 
 ### Usage
 ```python
-# To start the app run this
+# To start the app type
 ./cli.py
 
 # next song
@@ -21,12 +21,12 @@ Search and start songs from command line.<br>
 ./cli.py -pp
 ```
 
-For quick link to this app add it to usr local bin. Ex:<br>
+For symlink this app, add it to usr local bin. Ex:<br>
 sudo ln -s ~/Path/To/cli.py  /usr/local/bin/song<br>
 
 #### Usage is now
 ```python
-# To start the app run this
+# To start the app type
 song
 
 # next song
