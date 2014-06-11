@@ -8,7 +8,7 @@ class Spotify:
     _url = 'https://ws.spotify.com/search/1/track.json?q='
 
     # Get our data
-    def __init__(self, query=False):
+    def __init__(self, query=''):
         if query:
             response = requests.get(self._url + query)
             self.data = response.json()
