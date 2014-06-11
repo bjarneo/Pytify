@@ -1,13 +1,40 @@
 #!/usr/bin/env python
 import Spotify
+import sys
 
 
-search_input = raw_input('What artist / song are you searching for?\r\n')
+if len(sys.argv) > 1:
+    spotify = Spotify.Spotify()
 
-if search_input:
-    spotify = Spotify.Spotify(search_input)
-    spotify.list(10)
+    if sys.argv[1] == '-n':
+        spotify.next()
 
-    song_input = raw_input('\r\nType song number and hit enter to start song.\r\n')
-    if song_input:
-        spotify.listen(int(song_input))
+    elif sys.argv[1] == '-p':
+        spotify.prev()
+
+    elif sys.argv[1] == '-pp':
+        spotify.playPause()
+
+    elif sys.argv[1] == '-h':
+        print """
+        -n for next song
+        -p for previous song
+        -pp for pause and play song
+        """
+
+    else:
+        print """
+        See -h for help
+        """
+
+else:
+    search_input = raw_input('What artist / song are you searching for?\r\n')
+
+    if search_input:
+        spotify = Spotify.Spotify(search_input)
+        spotify.list(10)
+
+        song_input = raw_input('\r\nType song number and hit enter to start song.\r\n')
+        if song_input:
+            spotify.listen(int(song_input))
+
