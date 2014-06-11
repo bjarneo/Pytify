@@ -12,10 +12,10 @@ class Spotify:
         if query:
             response = requests.get(self._url + query)
             self.data = response.json()
+            self.songs = {}
 
     # List all. Limit if needed
     def list(self, limit=100):
-        self.songs = {}
         space = '{0:3} | {1:25} | {2:30} | {3:30}'
 
         print space.format('#', 'Artist', 'Song', 'Album')

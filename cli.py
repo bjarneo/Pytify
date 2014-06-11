@@ -28,13 +28,14 @@ if len(sys.argv) > 1:
         """
 
 else:
-    search_input = raw_input('What artist / song are you searching for?\r\n')
+    while 1:
+        search_input = raw_input('What artist / song are you searching for?\r\n')
+        if search_input:
+            spotify = Spotify.Spotify(search_input)
+            spotify.list(10)
 
-    if search_input:
-        spotify = Spotify.Spotify(search_input)
-        spotify.list(10)
-
-        song_input = raw_input('\r\nType song number and hit enter to start song.\r\n')
-        if song_input:
-            spotify.listen(int(song_input))
-
+            song_input = raw_input('\r\nType song number and press <enter> to play. Press <enter> for new search.\r\n')
+            if song_input:
+                spotify.listen(int(song_input))
+            else:
+                continue
