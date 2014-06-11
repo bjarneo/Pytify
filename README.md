@@ -21,8 +21,10 @@ Search and start songs from command line.<br>
 ./cli.py -pp
 ```
 
-For symlink this app, add it to usr local bin. Ex:<br>
-sudo ln -s ~/Path/To/cli.py  /usr/local/bin/song<br>
+```python
+# For symlink this app, add it to usr local bin. Example:
+sudo ln -s ~/Path/To/cli.py  /usr/local/bin/song
+```
 
 #### Usage is now
 ```python
