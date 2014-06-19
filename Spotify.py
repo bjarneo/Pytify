@@ -11,6 +11,7 @@ class Spotify:
     def __init__(self):
         self.songs = {}
         self.history = []
+        self.data = ''
 
     def search(self, query):
         if query:
@@ -25,10 +26,10 @@ class Spotify:
         print space.format('#', 'Artist', 'Song', 'Album')
         # Just to make it pwitty
         print space.format(
-            '---',
-            '-------------------------',
-            '------------------------------',
-            '------------------------------'
+            '-' * 3,
+            '-' * 25,
+            '-' * 30,
+            '-' * 30
         )
 
         for key, song in enumerate(self.data['tracks']):
@@ -49,7 +50,7 @@ class Spotify:
             time.sleep(0.01)
 
     def listen(self, index):
-        os.system('spotify ' + str(self.songs[index]))
+        os.system('spotify ' + str(self.songs.get(index)))
 
     def print_history(self):
         if len(self.history) > 5:
