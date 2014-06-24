@@ -2,6 +2,8 @@ import requests
 import time
 import os
 import dbus
+
+
 # Fetch songs with spotify api
 class Spotify:
     _url = 'https://ws.spotify.com/search/1/track.json?q='
@@ -11,10 +13,8 @@ class Spotify:
         self.__songs = {}
         self.__history = []
         self.__data = ''
-
-        session_bus = dbus.SessionBus()
         self.spotify = dbus.Interface(
-            session_bus.get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2'),
+            dbus.SessionBus().get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2'),
             'org.mpris.MediaPlayer2.Player'
         )
 
@@ -43,9 +43,9 @@ class Spotify:
 
             print space.format(
                 str(key + 1) + '.',
-                song['artists'][0]['name'].encode('utf-8'),
-                song['name'].encode('utf-8'),
-                song['album']['name'].encode('utf-8')
+                song['artists'][0]['name'][:25].encode('utf-8'),
+                song['name'][:30].encode('utf-8'),
+                song['album']['name'][:30].encode('utf-8')
             )
 
             # Save spotify uri and song for later use
