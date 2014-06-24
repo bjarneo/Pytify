@@ -43,14 +43,19 @@ class Spotify:
                 song['album']['name'].encode('utf-8')
             )
 
-            # Save spotify uri for later use
-            self.songs[key + 1] = song['href']
+            # Save spotify uri and song for later use
+            self.songs[key + 1] = {
+                'href': song['href'],
+                'song': '%s - %s' % (song['artists'][0]['name'].encode('utf-8'), song['name'].encode('utf-8'))
+            }
 
             # Sleep's just for the sexy output
             time.sleep(0.01)
 
     def listen(self, index):
-        os.system('spotify ' + str(self.songs.get(index)))
+        os.system('spotify ' + str(self.songs[index]['href']) + ' > /dev/null 2>&1')
+
+        return '\nPlaying: %s' % str(self.songs[index]['song'])
 
     def print_history(self):
         if len(self.history) > 5:

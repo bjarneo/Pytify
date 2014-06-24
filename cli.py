@@ -36,14 +36,14 @@ if len(sys.argv) > 1:
 
 else:
     while 1:
-        search_input = raw_input('What artist / song are you searching for?\r\n')
+        search_input = raw_input('What artist / song are you searching for?\r\n> ')
         if search_input:
             spotify.search(search_input)
             spotify.list(10)
             spotify.print_history()
 
-            song_input = raw_input('\r\nType song number and press <enter> to play. Press <enter> for new search.\r\n')
+            song_input = raw_input('\r\nType song number and press <enter> to play. Press <enter> for new search.\r\n> ')
             if song_input:
-                spotify.listen(int(song_input))
+                print spotify.listen(int(song_input))
             else:
                 continue
