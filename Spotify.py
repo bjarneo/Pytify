@@ -6,23 +6,25 @@ import dbus
 
 # Fetch songs with spotify api
 class Spotify:
-    _url = 'https://ws.spotify.com/search/1/track.json?q='
+    url = 'https://ws.spotify.com/search/1/track.json?q='
 
     # Get our data
     def __init__(self):
-        self.__songs = {}
-        self.__history = []
-        self.__data = ''
+        self._songs = {}
+        self._history = []
+        self._data = None 
         self.spotify = dbus.Interface(
             dbus.SessionBus().get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2'),
             'org.mpris.MediaPlayer2.Player'
         )
 
     def search(self, query):
-        if query:
-            response = requests.get(self._url + query)
-            self.__data = response.json()
-            self.__history.append(query)
+        try:
+            response = requests.get(self.url + query)
+            self._data = response.json()
+            self._history.append(query)
+        except StandardError:
+            print 'Search went wrong? Please try again.'
 
     # List all. Limit if needed
     def list(self, limit=100):
@@ -37,7 +39,7 @@ class Spotify:
             '-' * 30
         )
 
-        for key, song in enumerate(self.__data['tracks']):
+        for key, song in enumerate(self._data['tracks']):
             if key == limit:
                 break
 
@@ -49,7 +51,7 @@ class Spotify:
             )
 
             # Save spotify uri and song for later use
-            self.__songs[key + 1] = {
+            self._songs[key + 1] = {
                 'href': song['href'],
                 'song': '%s - %s' % (song['artists'][0]['name'].encode('utf-8'), song['name'].encode('utf-8'))
             }
@@ -58,16 +60,16 @@ class Spotify:
             time.sleep(0.01)
 
     def listen(self, index):
-        os.system('spotify ' + str(self.__songs[index]['href']) + ' > /dev/null 2>&1')
+        os.system('spotify %s > /dev/null 2>&1' % str(self._songs[index]['href']))
 
-        return '\nPlaying: %s\n' % str(self.__songs[index]['song'])
+        return '\nPlaying: %s \n' % str(self._songs[index]['song'])
 
     def print_history(self):
-        if len(self.__history) > 5:
-            self.__history.pop(0)
+        if len(self._history) > 5:
+            self._history.pop(0)
 
         print '\nLast five search results:'
-        for song in self.__history:
+        for song in self._history:
             print song
 
     def next(self):
@@ -88,4 +90,4 @@ class Spotify:
 
     # Debug
     def debug(self):
-        print self.__data['tracks']
+        print self._data['tracks']
