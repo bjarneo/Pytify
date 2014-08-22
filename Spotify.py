@@ -21,7 +21,9 @@ class Spotify:
     def search(self, query):
         try:
             response = requests.get(self.url + query)
+
             self._data = response.json()
+
             self._history.append(query)
         except StandardError:
             print 'Search went wrong? Please try again.'
@@ -69,6 +71,7 @@ class Spotify:
             self._history.pop(0)
 
         print '\nLast five search results:'
+
         for song in self._history:
             print song
 

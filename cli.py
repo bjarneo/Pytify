@@ -37,26 +37,26 @@ def app():
 
     else:
         print """
-############################################################
-#            _____             _   _  __                   #                      
-#           / ____|           | | (_)/ _|                  #
-#          | (___  _ __   ___ | |_ _| |_ _   _             #
-#           \___ \| '_ \ / _ \| __| |  _| | | |            #
-#           ____) | |_) | (_) | |_| | | | |_| |            #
-#          |_____/| .__/ \___/ \__|_|_|  \__, |            #
-#                 | |                     __/ |            #
-#                 |_|                    |___/             #
-#                                                          #  
-# by bjarneo <http://www.github.com/bjarneo/PythonSpotify> #
-#                                                          #
-############################################################
-"""
+ ############################################################
+ #            _____             _   _  __                   #                      
+ #           / ____|           | | (_)/ _|                  #
+ #          | (___  _ __   ___ | |_ _| |_ _   _             #
+ #           \___ \| '_ \ / _ \| __| |  _| | | |            #
+ #           ____) | |_) | (_) | |_| | | | |_| |            #
+ #          |_____/| .__/ \___/ \__|_|_|  \__, |            #
+ #                 | |                     __/ |            #
+ #                 |_|                    |___/             #
+ #                                                          #  
+ # by bjarneo <http://www.github.com/bjarneo/PythonSpotify> #
+ #                                                          #
+ ############################################################
+            """
 
         while 1:
             search_input = raw_input('What artist / song are you searching for?\n> ')
             if search_input:
                 spotify.search(search_input)
-                spotify.list(10)
+                spotify.list(15)
                 spotify.print_history()
 
                 song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
