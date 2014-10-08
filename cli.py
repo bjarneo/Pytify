@@ -66,4 +66,9 @@ def app():
                     continue
 
 if __name__ == '__main__':
-    app()
+    try: 
+        app()
+    except KeyboardInterrupt:
+        print '\n Closing application...\n'
+
+        pass
