@@ -4,7 +4,7 @@ PythonSpotify
 Search and start songs from command line.<br>
 
 ![Image of terminal]
-(http://i57.tinypic.com/2i0ver4.png)
+(http://i.imgur.com/B7t7gdh.gif)
 
 ### Usage
 ```python
