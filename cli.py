@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import Spotify
 import sys
+import os
+import dbus
 
 
 def app():
@@ -38,7 +40,7 @@ def app():
     else:
         print """
  ############################################################
- #            _____             _   _  __                   #                      
+ #            _____             _   _  __                   #
  #           / ____|           | | (_)/ _|                  #
  #          | (___  _ __   ___ | |_ _| |_ _   _             #
  #           \___ \| '_ \ / _ \| __| |  _| | | |            #
@@ -46,7 +48,7 @@ def app():
  #          |_____/| .__/ \___/ \__|_|_|  \__, |            #
  #                 | |                     __/ |            #
  #                 |_|                    |___/             #
- #                                                          #  
+ #                                                          #
  # by bjarneo <http://www.github.com/bjarneo/PythonSpotify> #
  #                                                          #
  ############################################################
@@ -66,9 +68,13 @@ def app():
                     continue
 
 if __name__ == '__main__':
-    try: 
+    try:
         app()
+
     except KeyboardInterrupt:
         print '\n Closing application...\n'
 
         pass
+
+    except dbus.exceptions.DBusException:
+        print '\n Start Spotify before using this cli application. \n'
