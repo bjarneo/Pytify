@@ -74,7 +74,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print '\n Closing application...\n'
 
-        pass
-
     except dbus.exceptions.DBusException:
         print '\n Start Spotify before using this cli application. \n'
