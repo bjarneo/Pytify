@@ -1,28 +1,28 @@
 #!/usr/bin/env python
-import Spotify
+from spotify import spotify
 import sys
 import os
 import dbus
 
 
 def app():
-    spotify = Spotify.Spotify()
+    sptfy = spotify.Spotify()
 
     if len(sys.argv) > 1:
         if sys.argv[1] == '-n':
-            spotify.next()
+            sptfy.next()
 
         elif sys.argv[1] == '-p':
-            spotify.prev()
+            sptfy.prev()
 
         elif sys.argv[1] == '-pp':
-            spotify.play_pause()
+            sptfy.play_pause()
 
         elif sys.argv[1] == '-s':
-            spotify.stop()
+            sptfy.stop()
 
         elif sys.argv[1] == '-m':
-            spotify.meta()
+            sptfy.meta()
 
         elif sys.argv[1] == '-h':
             print """
@@ -57,13 +57,13 @@ def app():
         while 1:
             search_input = raw_input('What artist / song are you searching for?\n> ')
             if search_input:
-                spotify.search(search_input)
-                spotify.list(15)
-                spotify.print_history()
+                sptfy.search(search_input)
+                sptfy.list(15)
+                sptfy.print_history()
 
                 song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
                 if song_input:
-                    print spotify.listen(int(song_input))
+                    print sptfy.listen(int(song_input))
                 else:
                     continue
 
