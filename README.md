@@ -1,10 +1,16 @@
-PythonSpotify
+Spotipy
 =============
 
 Search and start songs from command line.<br>
+Currently it only work in linux.<br>
 
 ![Image of terminal]
-(http://i.imgur.com/B7t7gdh.gif)
+(http://i.imgur.com/EpUDMJo.gif)
+
+### Dependency
+```bash
+pip install requests
+```
 
 ### Usage
 ```python
@@ -23,21 +29,21 @@ Search and start songs from command line.<br>
 
 ```python
 # To symlink this app so you don't need to write python cli.py or ./cli.py do this:
-sudo ln -s ~/Path/To/cli.py  /usr/local/bin/song
+sudo ln -s ~/Path/To/cli.py  /usr/local/bin/spotipy
 ```
 
 #### Usage is now
 ```python
 # To start the app type
-song
+spotipy
 
 # next song
-song -n
+spotipy -n
 
 # prev song
-song -p
+spotipy -p
 
 # play and pause song
-song -pp
+spotipy -pp
 
 ```
