@@ -1,22 +1,30 @@
+from sys import platform
+import subprocess
 import requests
 import time
-import os
 import dbus
 
 
 # Fetch songs with spotify api
-class Spotify:
+class Spotipy:
     url = 'https://ws.spotify.com/search/1/track.json?q='
 
     # Get our data
     def __init__(self):
         self._songs = {}
         self._history = []
-        self._data = None 
-        self.spotify = dbus.Interface(
-            dbus.SessionBus().get_object('org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2'),
-            'org.mpris.MediaPlayer2.Player'
-        )
+        self._data = None
+
+        if 'linux' in platform:
+            import dbus
+
+            self.interface = dbus.Interface(
+                dbus.SessionBus().get_object(
+                    'org.mpris.MediaPlayer2.spotify',
+                    '/org/mpris/MediaPlayer2'
+                    ),
+                    'org.mpris.MediaPlayer2.Player'
+                    )
 
     def search(self, query):
         try:
@@ -41,19 +49,19 @@ class Spotify:
             '-' * 30
         )
 
-        for key, song in enumerate(self._data['tracks']):
-            if key == limit:
+        for index, song in enumerate(self._data['tracks']):
+            if index == limit:
                 break
 
             print space.format(
-                str(key + 1) + '.',
+                str(index + 1) + '.',
                 song['artists'][0]['name'][:25].encode('utf-8'),
                 song['name'][:30].encode('utf-8'),
                 song['album']['name'][:30].encode('utf-8')
             )
 
             # Save spotify uri and song for later use
-            self._songs[key + 1] = {
+            self._songs[index + 1] = {
                 'href': song['href'],
                 'song': '%s - %s' % (song['artists'][0]['name'].encode('utf-8'), song['name'].encode('utf-8'))
             }
@@ -62,9 +70,18 @@ class Spotify:
             time.sleep(0.01)
 
     def listen(self, index):
-        os.system('spotify %s > /dev/null 2>&1' % str(self._songs[index]['href']))
+        uri = str(self._songs[index]['href'])
 
-        return '\nPlaying: %s \n' % str(self._songs[index]['song'])
+        if 'linux' in platform:
+            subprocess.call('spotify %s > /dev/null 2>&1' % uri, shell=True)
+        elif 'darwin' in platform:
+            subprocess.call([
+                'osascript',
+                '-e',
+                'tell app \'Spotify\' to play track \'%s\'' % uri
+            ])
+
+        print '\nPlaying: %s \n' % str(self._songs[index]['song'])
 
     def print_history(self):
         if len(self._history) > 5:
@@ -76,21 +93,41 @@ class Spotify:
             print song
 
     def next(self):
-        self.spotify.Next()
+        if 'linux' in platform:
+            self.interface.Next()
+        elif 'darwin' in platform:
+            subprocess.call([
+                'osascript',
+                '-e',
+                'tell app \'Spotify\' to next track'
+            ])
 
     def prev(self):
-        self.spotify.Prev()
+        if 'linux' in platform:
+            self.interface.Prev()
+        elif 'darwin' in platform:
+            subprocess.call([
+                'osascript',
+                '-e',
+                'tell app \'Spotify\' to previous track'
+        ])
 
     def play_pause(self):
-        self.spotify.PlayPause()
+        if 'linux' in platform:
+            self.interface.PlayPause()
+        elif 'darwin' in platform:
+            subprocess.call([
+                'osascript',
+                '-e',
+                'tell app \'Spotify\' to playpause'
+            ])
 
-    def stop(self):
-        self.spotify.Stop()
-
-    def meta(self):
-        # TODO: Fix metadata output
-        os.system('dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:"org.mpris.MediaPlayer2.Player" string:"Metadata"')
-
-    # Debug
-    def debug(self):
-        print self._data['tracks']
+    def pause(self):
+        if 'linux' in platform:
+            self.interface.Stop()
+        elif 'darwin' in platform:
+            subprocess.call([
+                'osascript',
+                '-e',
+                'tell app \'Spotify\' to pause'
+            ])
