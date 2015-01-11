@@ -2,7 +2,7 @@ Spotipy
 =============
 
 Search and start songs from command line.<br>
-Currently it only work in linux.<br>
+Currently it only works in linux.<br>
 
 ![Image of terminal]
 (http://i.imgur.com/EpUDMJo.gif)
@@ -47,3 +47,6 @@ spotipy -p
 spotipy -pp
 
 ```
+
+### Contributing
+Contributions are appreciated.
