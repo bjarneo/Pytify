@@ -2,6 +2,7 @@ from sys import platform
 import subprocess
 import requests
 import time
+import sys
 
 
 # Fetch songs with spotify api
@@ -17,13 +18,17 @@ class Spotipy:
         if 'linux' in platform:
             import dbus
 
-            self.interface = dbus.Interface(
-                dbus.SessionBus().get_object(
-                    'org.mpris.MediaPlayer2.spotify',
-                    '/org/mpris/MediaPlayer2'
-                    ),
-                    'org.mpris.MediaPlayer2.Player'
+            try:
+                self.interface = dbus.Interface(
+                    dbus.SessionBus().get_object(
+                        'org.mpris.MediaPlayer2.spotify',
+                        '/org/mpris/MediaPlayer2'
+                        ),
+                        'org.mpris.MediaPlayer2.Player'
                     )
+
+            except dbus.exceptions.DBusException:
+                sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
 
     def search(self, query):
         try:

@@ -13,7 +13,7 @@ def app():
     parser.add_argument('-p', help='for previous song', action='store_true')
     parser.add_argument('-pp', help='for play and pause song', action='store_true')
     parser.add_argument('-s', help='stop music', action='store_true')
-    
+
     args = parser.parse_args()
 
     if args.n:
@@ -27,9 +27,6 @@ def app():
 
     elif args.s:
         sptfy.stop()
-
-    elif args.m:
-        sptfy.meta()
 
     else:
         print """
@@ -70,6 +67,3 @@ if __name__ == '__main__':
 
     except KeyboardInterrupt:
         print '\n Closing application...\n'
-
-    except dbus.exceptions.DBusException:
-        print '\n Some errors occured. Try restart or start Spotify. \n'
