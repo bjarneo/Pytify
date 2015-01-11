@@ -50,3 +50,6 @@ spotipy -pp
 
 ### Contributing
 Contributions are appreciated.
+
+### Contributors
+[@joined](https://github.com/joined/) - OS X
