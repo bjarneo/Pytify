@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 from spotipy import spotipy
-import sys
-import os
 import dbus
 import argparse
 
@@ -15,8 +13,7 @@ def app():
     parser.add_argument('-p', help='for previous song', action='store_true')
     parser.add_argument('-pp', help='for play and pause song', action='store_true')
     parser.add_argument('-s', help='stop music', action='store_true')
-    parser.add_argument('-m', help='meta information', action='store_true')
-
+    
     args = parser.parse_args()
 
     if args.n:

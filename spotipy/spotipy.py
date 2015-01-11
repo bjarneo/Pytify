@@ -2,7 +2,6 @@ from sys import platform
 import subprocess
 import requests
 import time
-import dbus
 
 
 # Fetch songs with spotify api
