@@ -3,39 +3,36 @@ from spotify import spotify
 import sys
 import os
 import dbus
+import argparse
 
 
 def app():
     sptfy = spotify.Spotify()
 
-    if len(sys.argv) > 1:
-        if sys.argv[1] == '-n':
-            sptfy.next()
+    parser = argparse.ArgumentParser(description='Spotify controller')
 
-        elif sys.argv[1] == '-p':
-            sptfy.prev()
+    parser.add_argument('-n', help='for next song', action='store_true')
+    parser.add_argument('-p', help='for previous song', action='store_true')
+    parser.add_argument('-pp', help='for play and pause song', action='store_true')
+    parser.add_argument('-s', help='stop music', action='store_true')
+    parser.add_argument('-m', help='meta information', action='store_true')
 
-        elif sys.argv[1] == '-pp':
-            sptfy.play_pause()
+    args = parser.parse_args()
 
-        elif sys.argv[1] == '-s':
-            sptfy.stop()
+    if args.n:
+        sptfy.next()
 
-        elif sys.argv[1] == '-m':
-            sptfy.meta()
+    elif args.p:
+        sptfy.prev()
 
-        elif sys.argv[1] == '-h':
-            print """
-            -n for next song
-            -p for previous song
-            -pp for pause and play song
-            -s to stop song
-            """
+    elif args.pp:
+        sptfy.play_pause()
 
-        else:
-            print """
-            See -h for help
-            """
+    elif args.s:
+        sptfy.stop()
+
+    elif args.m:
+        sptfy.meta()
 
     else:
         print """
@@ -78,4 +75,4 @@ if __name__ == '__main__':
         print '\n Closing application...\n'
 
     except dbus.exceptions.DBusException:
-        print '\n Start Spotify before using this cli application. \n'
+        print '\n Some errors occured. Try restart or start Spotify. \n'
