@@ -2,7 +2,7 @@ Spotipy
 =============
 
 Search and start songs from command line.<br>
-Currently it only works in linux.<br>
+Should work in Linux and OS X.<br>
 
 ![Image of terminal]
 (http://i.imgur.com/EpUDMJo.gif)
