@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from spotify import spotify
+from spotipy import spotipy
 import sys
 import os
 import dbus
@@ -7,7 +7,7 @@ import argparse
 
 
 def app():
-    sptfy = spotify.Spotify()
+    sptfy = spotipy.Spotipy()
 
     parser = argparse.ArgumentParser(description='Spotify controller')
 
@@ -63,7 +63,7 @@ def app():
 
                 song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
                 if song_input:
-                    print sptfy.listen(int(song_input))
+                    sptfy.listen(int(song_input))
                 else:
                     continue
 
