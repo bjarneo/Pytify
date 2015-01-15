@@ -38,31 +38,31 @@ class Spotipy:
 
             self._history.append(query)
         except StandardError:
-            print 'Search went wrong? Please try again.'
+            print('Search went wrong? Please try again.')
 
     # List all. Limit if needed
     def list(self, limit=100):
         space = '{0:3} | {1:25} | {2:30} | {3:30}'
 
-        print space.format('#', 'Artist', 'Song', 'Album')
+        print(space.format('#', 'Artist', 'Song', 'Album'))
         # Just to make it pwitty
-        print space.format(
+        print(space.format(
             '-' * 3,
             '-' * 25,
             '-' * 30,
             '-' * 30
-        )
+        ))
 
         for index, song in enumerate(self._data['tracks']):
             if index == limit:
                 break
 
-            print space.format(
+            print(space.format(
                 str(index + 1) + '.',
                 song['artists'][0]['name'][:25].encode('utf-8'),
                 song['name'][:30].encode('utf-8'),
                 song['album']['name'][:30].encode('utf-8')
-            )
+            ))
 
             # Save spotify uri and song for later use
             self._songs[index + 1] = {
@@ -85,16 +85,16 @@ class Spotipy:
                 'tell app \'Spotify\' to play track \'%s\'' % uri
             ])
 
-        print '\nPlaying: %s \n' % str(self._songs[index]['song'])
+        print('\nPlaying: %s \n' % str(self._songs[index]['song']))
 
     def print_history(self):
         if len(self._history) > 5:
             self._history.pop(0)
 
-        print '\nLast five search results:'
+        print('\nLast five search results:')
 
         for song in self._history:
-            print song
+            print(song)
 
     def next(self):
         if 'linux' in platform:

@@ -29,7 +29,7 @@ def app():
         sptfy.stop()
 
     else:
-        print """
+        print("""
  ################################################################
  #                                                              #
  #      ____                    __                              #
@@ -46,7 +46,7 @@ def app():
  #    by bjarneo <http://www.github.com/bjarneo/Spotipy>        #
  #                                                              #
  ################################################################
-            """
+            """)
 
         while 1:
             search_input = raw_input('What artist / song are you searching for?\n> ')
@@ -66,4 +66,4 @@ if __name__ == '__main__':
         app()
 
     except KeyboardInterrupt:
-        print '\n Closing application...\n'
+        print('\n Closing application...\n')
