@@ -58,10 +58,10 @@ class Spotipy:
                 break
 
             print(space.format(
-                str(index + 1) + '.',
-                song['artists'][0]['name'][:25].encode('utf-8'),
-                song['name'][:30].encode('utf-8'),
-                song['album']['name'][:30].encode('utf-8')
+                '%d.' % (index + 1),
+                song['artists'][0]['name'][:25],
+                song['name'][:30],
+                song['album']['name'][:30]
             ))
 
             # Save spotify uri and song for later use

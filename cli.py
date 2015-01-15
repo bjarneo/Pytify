@@ -2,6 +2,7 @@
 from spotipy import spotipy
 import dbus
 import argparse
+import sys
 
 
 def app():
@@ -49,13 +50,21 @@ def app():
             """)
 
         while 1:
-            search_input = raw_input('What artist / song are you searching for?\n> ')
+            if sys.version_info >= (3, 0):
+                search_input = input('What artist / song are you searching for?\n> ')
+            else:
+                search_input = raw_input('What artist / song are you searching for?\n> ')
+
             if search_input:
                 sptfy.search(search_input)
                 sptfy.list(15)
                 sptfy.print_history()
 
-                song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+                if sys.version_info >= (3, 0):
+                    song_input = input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+                else:
+                    song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+
                 if song_input:
                     sptfy.listen(int(song_input))
                 else:
