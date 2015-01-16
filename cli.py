@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from spotipy import spotipy
-import dbus
 import argparse
 import sys
 
