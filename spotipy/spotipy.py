@@ -7,14 +7,20 @@ import sys
 
 # Fetch songs with spotify api
 class Spotipy:
+    # Api url
     url = 'https://ws.spotify.com/search/1/track.json?q='
+
+    # hold songs
+    _songs = {}
+
+    # history
+    _history = []
+
+    # data
+    _data = None
 
     # Get our data
     def __init__(self):
-        self._songs = {}
-        self._history = []
-        self._data = None
-
         if 'linux' in platform:
             import dbus
 
@@ -45,6 +51,7 @@ class Spotipy:
         space = '{0:3} | {1:25} | {2:30} | {3:30}'
 
         print(space.format('#', 'Artist', 'Song', 'Album'))
+
         # Just to make it pwitty
         print(space.format(
             '-' * 3,
@@ -57,17 +64,26 @@ class Spotipy:
             if index == limit:
                 break
 
+            if sys.version_info >= (3, 0):
+                artist_name = song['artists'][0]['name'][:25]
+                song_name = song['name'][:30]
+                album_name = song['album']['name'][:30]
+            else:
+                artist_name = song['artists'][0]['name'][:25].encode('utf-8')
+                song_name = song['name'][:30].encode('utf-8')
+                album_name = song['album']['name'][:30].encode('utf-8')
+
             print(space.format(
                 '%d.' % (index + 1),
-                song['artists'][0]['name'][:25],
-                song['name'][:30],
-                song['album']['name'][:30]
+                '%s' % artist_name,
+                '%s' % song_name,
+                '%s' % album_name
             ))
 
             # Save spotify uri and song for later use
             self._songs[index + 1] = {
                 'href': song['href'],
-                'song': '%s - %s' % (song['artists'][0]['name'].encode('utf-8'), song['name'].encode('utf-8'))
+                'song': '%s - %s' % (artist_name, song_name)
             }
 
             # Sleep's just for the sexy output
