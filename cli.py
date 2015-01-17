@@ -49,6 +49,7 @@ def app():
     else:
         intro()
 
+        # Our interaction
         while 1:
             if sys.version_info >= (3, 0):
                 search_input = input('What artist / song are you searching for?\n> ')
@@ -68,6 +69,7 @@ def app():
                 if song_input:
                     sptfy.listen(int(song_input))
 
+# Run the app
 if __name__ == '__main__':
     try:
         app()

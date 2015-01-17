@@ -36,6 +36,7 @@ class Spotipy:
             except dbus.exceptions.DBusException:
                 sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
 
+    # Search for song / album / artist
     def search(self, query):
         try:
             response = requests.get(self.url + query)
