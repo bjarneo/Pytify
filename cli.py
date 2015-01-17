@@ -67,8 +67,6 @@ def app():
 
                 if song_input:
                     sptfy.listen(int(song_input))
-                #else:
-                    #continue
 
 if __name__ == '__main__':
     try:
