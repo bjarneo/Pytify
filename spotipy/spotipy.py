@@ -83,7 +83,7 @@ class Spotipy:
             # Save spotify uri and song for later use
             self._songs[index + 1] = {
                 'href': song['href'],
-                'song': '%s - %s' % (artist_name, song_name)
+                'song': '%s - %s' % (artist_name, song_name )
             }
 
             # Sleep's just for the sexy output
@@ -130,7 +130,7 @@ class Spotipy:
                 'osascript',
                 '-e',
                 'tell app \'Spotify\' to previous track'
-        ])
+            ])
 
     def play_pause(self):
         if 'linux' in platform:
