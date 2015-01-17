@@ -4,10 +4,28 @@ import argparse
 import sys
 
 
+def intro():
+    print(' ################################################################')
+    print(' #                                                              #')
+    print(' #      ____                    __                              #')
+    print(' #     /\  _`\                 /\ \__  __                       #')
+    print(' #     \ \,\L\_\  _____     ___\ \ ,_\/\_\  _____   __  __      #')
+    print(' #      \/_\__ \ /\ \'__`\  / __`\ \ \/\/\ \/\ \'__`\/\ \/\ \     #')
+    print(' #        /\ \L\ \ \ \L\ \/\ \L\ \ \ \_\ \ \ \ \L\ \ \ \_\ \    #')
+    print(' #        \ `\____\ \ ,__/\ \____/\ \__\\ \_\ \ ,__/\/`____  \   #')
+    print(' #         \/_____/\ \ \/  \/___/  \/__/ \/_/\ \ \/  `/___/> \  #')
+    print(' #                  \ \_\                     \ \_\     /\___/  #')
+    print(' #                   \/_/                      \/_/     \/__/   #')
+    print(' #                                                              #')
+    print(' #                                                              #')
+    print(' #    by bjarneo <http://www.github.com/bjarneo/Spotipy>        #')
+    print(' #                                                              #')
+    print(' ################################################################')
+
 def app():
     sptfy = spotipy.Spotipy()
 
-    parser = argparse.ArgumentParser(description='Spotify controller')
+    parser = argparse.ArgumentParser(description='Spotify remote')
 
     parser.add_argument('-n', help='for next song', action='store_true')
     parser.add_argument('-p', help='for previous song', action='store_true')
@@ -29,24 +47,7 @@ def app():
         sptfy.stop()
 
     else:
-        print("""
- ################################################################
- #                                                              #
- #      ____                    __                              #
- #     /\  _`\                 /\ \__  __                       #
- #     \ \,\L\_\  _____     ___\ \ ,_\/\_\  _____   __  __      #
- #      \/_\__ \ /\ '__`\  / __`\ \ \/\/\ \/\ '__`\/\ \/\ \     #
- #        /\ \L\ \ \ \L\ \/\ \L\ \ \ \_\ \ \ \ \L\ \ \ \_\ \    #
- #        \ `\____\ \ ,__/\ \____/\ \__\\ \_\ \ ,__/\/`____  \   #
- #         \/_____/\ \ \/  \/___/  \/__/ \/_/\ \ \/  `/___/> \  #
- #                  \ \_\                     \ \_\     /\___/  #
- #                   \/_/                      \/_/     \/__/   #
- #                                                              #
- #                                                              #
- #    by bjarneo <http://www.github.com/bjarneo/Spotipy>        #
- #                                                              #
- ################################################################
-            """)
+        intro()
 
         while 1:
             if sys.version_info >= (3, 0):
@@ -66,8 +67,8 @@ def app():
 
                 if song_input:
                     sptfy.listen(int(song_input))
-                else:
-                    continue
+                #else:
+                    #continue
 
 if __name__ == '__main__':
     try:
