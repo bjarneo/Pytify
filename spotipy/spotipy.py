@@ -99,7 +99,7 @@ class Spotipy:
             subprocess.call([
                 'osascript',
                 '-e',
-                'tell app \'Spotify\' to play track \'%s\'' % uri
+                'tell app "Spotify" to play track "%s"' % uri
             ])
 
         print('\nPlaying: %s \n' % str(self._songs[index]['song']))
