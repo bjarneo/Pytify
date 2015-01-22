@@ -19,23 +19,6 @@ class Spotipy:
     # data
     _data = None
 
-    # Get our data
-    def __init__(self):
-        if 'linux' in platform:
-            import dbus
-
-            try:
-                self.interface = dbus.Interface(
-                    dbus.SessionBus().get_object(
-                        'org.mpris.MediaPlayer2.spotify',
-                        '/org/mpris/MediaPlayer2'
-                        ),
-                        'org.mpris.MediaPlayer2.Player'
-                    )
-
-            except dbus.exceptions.DBusException:
-                sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
-
     # Search for song / album / artist
     def search(self, query):
         try:
@@ -90,19 +73,14 @@ class Spotipy:
             # Sleep's just for the sexy output
             time.sleep(0.01)
 
+    def _get_song_uri_at_index(self, index):
+        return str(self._songs[index]['href'])
+
+    def _get_song_name_at_index(self, index):
+        return str(self._songs[index]['song'])
+
     def listen(self, index):
-        uri = str(self._songs[index]['href'])
-
-        if 'linux' in platform:
-            subprocess.call('spotify %s > /dev/null 2>&1' % uri, shell=True)
-        elif 'darwin' in platform:
-            subprocess.call([
-                'osascript',
-                '-e',
-                'tell app "Spotify" to play track "%s"' % uri
-            ])
-
-        print('\nPlaying: %s \n' % str(self._songs[index]['song']))
+        raise NotImplementedError()
 
     def print_history(self):
         if len(self._history) > 5:
@@ -114,41 +92,82 @@ class Spotipy:
             print(song)
 
     def next(self):
-        if 'linux' in platform:
-            self.interface.Next()
-        elif 'darwin' in platform:
-            subprocess.call([
-                'osascript',
-                '-e',
-                'tell app "Spotify" to next track'
-            ])
+        raise NotImplementedError()
 
     def prev(self):
-        if 'linux' in platform:
-            self.interface.Prev()
-        elif 'darwin' in platform:
-            subprocess.call([
-                'osascript',
-                '-e',
-                'tell app "Spotify" to previous track'
-            ])
+        raise NotImplementedError()
 
     def play_pause(self):
-        if 'linux' in platform:
-            self.interface.PlayPause()
-        elif 'darwin' in platform:
-            subprocess.call([
-                'osascript',
-                '-e',
-                'tell app "Spotify" to playpause'
-            ])
+        raise NotImplementedError()
 
     def pause(self):
-        if 'linux' in platform:
-            self.interface.Stop()
-        elif 'darwin' in platform:
-            subprocess.call([
-                'osascript',
-                '-e',
-                'tell app "Spotify" to pause'
-            ])
+        raise NotImplementedError()
+
+
+def get_spotipy_class_by_platform():
+    if 'linux' in platform:
+        return LinuxSpotipy
+    elif 'darwin' in platform:
+        return DarwinSpotipy
+    else:
+        raise Exception("%s is not supported." % platform)
+
+
+class DarwinSpotipy(Spotipy):
+    def _make_osascript_call(self, command):
+        subprocess.call([
+            'osascript',
+            '-e',
+            command
+        ])
+
+    def listen(self, index):
+        uri = self._get_song_uri_at_index(index)
+        self._make_osascript_call('tell app "Spotify" to play track "%s"' % uri)
+        print('\nPlaying: %s \n' % self._get_song_name_at_index(index))
+
+    def next(self):
+        self._make_osascript_call('tell app "Spotify" to next track')
+
+    def prev(self):
+        self._make_osascript_call('tell app "Spotify" to previous track')
+
+    def play_pause(self):
+        self._make_osascript_call('tell app "Spotify" to playpause')
+
+    def pause(self):
+        self._make_osascript_call('tell app "Spotify" to pause')
+
+
+class LinuxSpotipy(Spotipy):
+    def __init__(self):
+        import dbus
+
+        try:
+            self.interface = dbus.Interface(
+                dbus.SessionBus().get_object(
+                    'org.mpris.MediaPlayer2.spotify',
+                    '/org/mpris/MediaPlayer2'
+                    ),
+                    'org.mpris.MediaPlayer2.Player'
+                )
+
+        except dbus.exceptions.DBusException:
+            sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
+
+    def listen(self, index):
+        uri = self._get_song_uri_at_index(index)
+        subprocess.call('spotify %s > /dev/null 2>&1' % uri, shell=True)
+        print('\nPlaying: %s \n' % self._get_song_name_at_index(index))
+
+    def next(self):
+        self.interface.Next()
+
+    def prev(self):
+        self.interface.Previous()
+
+    def play_pause(self):
+        self.interface.PlayPause()
+
+    def pause(self):
+        self.interface.Stop()

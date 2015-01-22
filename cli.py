@@ -6,7 +6,7 @@ import sys
 
 class App:
     def __init__(self):
-        self.sptfy = spotipy.Spotipy()
+        self.sptfy = spotipy.get_spotipy_class_by_platform()()
 
         self.run()
 
@@ -73,7 +73,12 @@ class App:
                     song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
 
                 if song_input:
-                    self.sptfy.listen(int(song_input))
+                    try:
+                        self.sptfy.listen(int(song_input))
+                    # stop user entering something that is not a number.
+                    except ValueError:
+                        continue
+
 
 
 # Run the app
