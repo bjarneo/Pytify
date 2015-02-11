@@ -119,10 +119,12 @@ class DarwinSpotipy(Spotipy):
             Check if there is a Spotify process running and if not, run Spotify.
         """
         try:
-            count = int(subprocess.check_output(["osascript",
-                      "-e", "tell application \"System Events\"",
-                      "-e", "count (every process whose name is \"Spotify\")",
-                      "-e", "end tell"]).strip()) 
+            count = int(subprocess.check_output([
+                "osascript",
+                "-e", "tell application \"System Events\"",
+                "-e", "count (every process whose name is \"Spotify\")",
+                "-e", "end tell"
+                ]).strip())
             if count == 0:
                 print "\n[OPENING SPOTIFY] The Spotify app was not open.\n"
                 self._make_osascript_call("tell application \"Spotify\" to activate")
@@ -135,7 +137,7 @@ class DarwinSpotipy(Spotipy):
             '-e',
             command
         ])
- 
+
     def listen(self, index):
         uri = self._get_song_uri_at_index(index)
         self._make_osascript_call('tell app "Spotify" to play track "%s"' % uri)
@@ -163,9 +165,7 @@ class LinuxSpotipy(Spotipy):
                 dbus.SessionBus().get_object(
                     'org.mpris.MediaPlayer2.spotify',
                     '/org/mpris/MediaPlayer2'
-                    ),
-                    'org.mpris.MediaPlayer2.Player'
-                )
+                    ), 'org.mpris.MediaPlayer2.Player')
 
         except dbus.exceptions.DBusException:
             sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
