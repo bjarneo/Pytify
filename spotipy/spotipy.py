@@ -126,7 +126,7 @@ class DarwinSpotipy(Spotipy):
                 "-e", "end tell"
                 ]).strip())
             if count == 0:
-                print "\n[OPENING SPOTIFY] The Spotify app was not open.\n"
+                print ("\n[OPENING SPOTIFY] The Spotify app was not open.\n")
                 self._make_osascript_call("tell application \"Spotify\" to activate")
         except Exception:
             sys.exit("You don't have Spotify installed. Please install it.")

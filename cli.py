@@ -51,33 +51,55 @@ class App:
         print(' #                   \/_/                      \/_/     \/__/   #')
         print(' #                                                              #')
         print(' #                                                              #')
-        print(' #    by bjarneo <http://www.github.com/bjarneo/Spotipy>        #')
+        print(' #    by miguel mejia <http://miguelmejia.me>                   #')
         print(' #                                                              #')
         print(' ################################################################')
 
     def interaction(self):
+
+        print('Welcome to Spotipy!')
+        print('Commands: next, prev, play, pause, search')
+
         while 1:
+
             if sys.version_info >= (3, 0):
-                search_input = input('What artist / song are you searching for?\n> ')
+                user_choice = input(": ")
             else:
-                search_input = raw_input('What artist / song are you searching for?\n> ')
+                user_choice = raw_input(": ")
 
-            if search_input:
-                self.sptfy.search(search_input)
-                self.sptfy.list(15)
-                self.sptfy.print_history()
+            next_words = ["next", "n"]
+            prev_words = ["p", "prev", "previous"]
+            pp_words = ["play", "pause", "pp"]
+            search_words = ["search", "s"]
 
+            if user_choice in next_words:
+                self.sptfy.next()
+            elif user_choice in prev_words:
+                self.sptfy.prev()
+            elif user_choice in pp_words:
+                self.sptfy.play_pause()
+            elif user_choice in search_words:
                 if sys.version_info >= (3, 0):
-                    song_input = input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+                    search_input = input('What artist / song are you searching for?\n> ')
                 else:
-                    song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+                    search_input = raw_input('What artist / song are you searching for?\n> ')
 
-                if song_input:
-                    try:
-                        self.sptfy.listen(int(song_input))
-                    # stop user entering something that is not a number.
-                    except ValueError:
-                        continue
+                if search_input:
+                    self.sptfy.search(search_input)
+                    self.sptfy.list(15)
+                    self.sptfy.print_history()
+
+                    if sys.version_info >= (3, 0):
+                        song_input = input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+                    else:
+                        song_input = raw_input('\nType song number and press <enter> to play. Press <enter> for new search.\n> ')
+
+                    if song_input:
+                        try:
+                            self.sptfy.listen(int(song_input))
+                        # stop user entering something that is not a number.
+                        except ValueError:
+                            continue
 
 
 # Run the app
