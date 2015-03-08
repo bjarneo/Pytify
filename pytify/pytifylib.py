@@ -5,7 +5,7 @@ import sys
 
 
 # Fetch songs with spotify api
-class Spotipy:
+class Pytifylib:
     # Api url
     url = 'https://ws.spotify.com/search/1/track.json?q='
 
@@ -114,16 +114,16 @@ class Spotipy:
         raise NotImplementedError()
 
 
-def get_spotipy_class_by_platform():
+def get_pytify_class_by_platform():
     if 'linux' in platform:
-        return LinuxSpotipy
+        return LinuxPytify
     elif 'darwin' in platform:
-        return DarwinSpotipy
+        return DarwinPytify
     else:
         raise Exception("%s is not supported." % platform)
 
 
-class DarwinSpotipy(Spotipy):
+class DarwinPytify(Pytifylib):
     def __init__(self):
         """
             Check if there is a Spotify process running and if not, run Spotify.
@@ -165,7 +165,7 @@ class DarwinSpotipy(Spotipy):
         self._make_osascript_call('tell app "Spotify" to pause')
 
 
-class LinuxSpotipy(Spotipy):
+class LinuxPytify(Pytifylib):
     def __init__(self):
         import dbus
 

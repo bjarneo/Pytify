@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from spotipy import spotipy
-from spotipy import menu
+import pytifylib
+import menu
 import argparse
 import sys
 import curses
@@ -8,7 +8,7 @@ import curses
 
 class App:
     def __init__(self):
-        self.sptfy = spotipy.get_spotipy_class_by_platform()()
+        self.pytify = pytifylib.get_pytify_class_by_platform()()
 
         self.run()
 
@@ -35,16 +35,16 @@ class App:
         args = parser.parse_args()
 
         if args.n:
-            self.sptfy.next()
+            self.pytify.next()
 
         elif args.p:
-            self.sptfy.prev()
+            self.pytify.prev()
 
         elif args.pp:
-            self.sptfy.play_pause()
+            self.pytify.play_pause()
 
         elif args.s:
-            self.sptfy.stop()
+            self.pytify.stop()
 
         else:
             self.interaction()
@@ -69,12 +69,12 @@ class App:
                 search_input = raw_input('What artist / song are you searching for?\n> ')
 
             if search_input:
-                self.sptfy.search(search_input)
+                self.pytify.search(search_input)
 
-                self.menu(list=self.sptfy.list())
+                self.menu(list=self.pytify.list())
 
-# Run the app
-if __name__ == '__main__':
+
+def main():
     try:
         App()
 

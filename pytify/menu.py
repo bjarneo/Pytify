@@ -4,9 +4,9 @@ from curses import panel
 
 
 if sys.version_info >= (3, 0):
-    from spotipy.spotipy import get_spotipy_class_by_platform
+    from pytifylib import get_pytify_class_by_platform
 else:
-    from spotipy import get_spotipy_class_by_platform
+    from pytifylib import get_pytify_class_by_platform
 
 
 """
@@ -14,7 +14,7 @@ else:
 """
 class Menu(object):
     def __init__(self, items, stdscreen):
-        self.sptfy = get_spotipy_class_by_platform()()
+        self.pytify = get_pytify_class_by_platform()()
         self.window = stdscreen.subwin(0,0)
         self.window.keypad(1)
         self.panel = panel.new_panel(self.window)
@@ -60,7 +60,7 @@ class Menu(object):
             key = self.window.getch()
 
             if key in [curses.KEY_ENTER, ord('\n')]:
-                self.sptfy.listen(int(self.position - 1))
+                self.pytify.listen(int(self.position - 1))
 
             elif key == curses.KEY_UP:
                 self.navigate(-1)
@@ -69,14 +69,14 @@ class Menu(object):
                 self.navigate(1)
 
             elif key == curses.KEY_LEFT:
-                self.sptfy.prev()
+                self.pytify.prev()
 
             elif key == curses.KEY_RIGHT:
-                self.sptfy.next()
+                self.pytify.next()
 
             # spacebar
             elif key == 32:
-                self.sptfy.play_pause()
+                self.pytify.play_pause()
 
             # escape
             elif key == 27:
