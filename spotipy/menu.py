@@ -1,6 +1,12 @@
 import curses
+import sys
 from curses import panel
-import spotipy
+
+
+if sys.version_info >= (3, 0):
+    from spotipy.spotipy import get_spotipy_class_by_platform
+else:
+    from spotipy import get_spotipy_class_by_platform
 
 
 """
@@ -8,7 +14,7 @@ import spotipy
 """
 class Menu(object):
     def __init__(self, items, stdscreen):
-        self.sptfy = spotipy.get_spotipy_class_by_platform()()
+        self.sptfy = get_spotipy_class_by_platform()()
         self.window = stdscreen.subwin(0,0)
         self.window.keypad(1)
         self.panel = panel.new_panel(self.window)
