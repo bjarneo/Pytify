@@ -125,8 +125,6 @@ class App:
             self.sptfy.stop()
 
         else:
-            #self.intro()
-
             self.interaction()
 
     def intro(self):
@@ -148,6 +146,8 @@ class App:
         print(' ################################################################')
 
     def interaction(self):
+        self.intro()
+
         while 1:
             if sys.version_info >= (3, 0):
                 search_input = input('What artist / song are you searching for?\n> ')
