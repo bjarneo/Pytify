@@ -1,12 +1,6 @@
 import curses
-import sys
 from curses import panel
-
-
-if sys.version_info >= (3, 0):
-    from pytifylib import get_pytify_class_by_platform
-else:
-    from pytifylib import get_pytify_class_by_platform
+from pytifylib import get_pytify_class_by_platform
 
 
 """
