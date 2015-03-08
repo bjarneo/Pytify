@@ -1,4 +1,4 @@
-Spotipy
+Pytify
 =============
 
 Search and start songs from command line.<br>

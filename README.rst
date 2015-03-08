@@ -1,4 +1,4 @@
-Spotipy
+Pytify
 =============
 
 Search and start songs from command line.<br>
@@ -8,45 +8,37 @@ Supports both python 2 and 3. <br>
 ![Image of terminal]
 (http://i.imgur.com/EpUDMJo.gif)
 
-### Dependency
-```bash
-pip install requests
+
+## Installation
+```python
+$ sudo pip install --pre pytify
+```
+
+## Or clone the repo
+```python
+$ git clone https://github.com/bjarneo/pytify.git
+$ cd pytify
+$ sudo python setup.py install
 ```
 
 ### Usage
 ```python
 # To start the app type
-./cli.py
+$ pytify
 
 # next song
-./cli.py -n
+$ pytify -n
 
 # prev song
-./cli.py -p
+$ pytify -p
 
 # play and pause song
-./cli.py -pp
+$ pytify -pp
 ```
 
-```python
-# To symlink this app so you don't need to write python cli.py or ./cli.py do this:
-sudo ln -s ~/Path/To/cli.py  /usr/local/bin/spotipy
-```
-
-#### Usage is now
-```python
-# To start the app type
-spotipy
-
-# next song
-spotipy -n
-
-# prev song
-spotipy -p
-
-# play and pause song
-spotipy -pp
-
+### Dependency
+```bash
+pip install requests
 ```
 
 ### Contributing
