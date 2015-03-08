@@ -56,7 +56,7 @@ class App:
         print('#         ) __/)  /  )(  )( ) _) )  /          #')
         print('#        (__) (__/  (__)(__(__) (__/           #')
         print('#                 by bjarneo                   #')
-        print('#    <http://www.github.com/bjarneo/Spotipy>   #')
+        print('#    <http://www.github.com/bjarneo/Pytify>    #')
         print('################################################')
 
     def interaction(self):
