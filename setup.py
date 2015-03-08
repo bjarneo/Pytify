@@ -1,6 +1,6 @@
 from setuptools import setup
 
-__version__ = '2.0.2'
+__version__ = '2.0.3'
 
 setup(
     name='pytify',
