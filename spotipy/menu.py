@@ -23,8 +23,10 @@ class Menu(object):
 
         self.position = 2
         self.items = items
+        self.song_length = len(items) - 1
+
         self.items.append(' ')
-        self.items.append('<UP> and <DOWN> to navigate between songs.')
+        self.items.append('<UP> and <DOWN> for navigation.')
         self.items.append('<Enter> to select song.')
         self.items.append('<Esc> for search.')
         self.items.append('<LEFT> and <RIGHT> for prev/next song.')
@@ -35,10 +37,8 @@ class Menu(object):
 
         if self.position < 2:
             self.position = 2
-        elif self.position > 16:
-            self.position = 16
-        elif self.position >= len(self.items):
-            self.position = len(self.items) - 1
+        elif self.position > self.song_length:
+            self.position = self.song_length
 
     def display(self):
         self.panel.top()
