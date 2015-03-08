@@ -1,12 +1,11 @@
 from sys import platform
 import subprocess
 import requests
-import time
 import sys
 
 
 # Fetch songs with spotify api
-class Spotipy:
+class Pytifylib:
     # Api url
     url = 'https://ws.spotify.com/search/1/track.json?q='
 
@@ -19,33 +18,25 @@ class Spotipy:
     # data
     _data = None
 
+    # limit output songs
+    _limit = 15
+
     # Search for song / album / artist
     def search(self, query):
         try:
             response = requests.get(self.url + query)
 
-            self._data = response.json()
-
             self._history.append(query)
+
+            self.set_songs(data=response.json())
         except StandardError:
             print('Search went wrong? Please try again.')
 
-    # List all. Limit if needed
-    def list(self, limit=100):
-        space = '{0:3} | {1:25} | {2:30} | {3:30}'
+    def set_songs(self, data):
+        self._data = data
 
-        print(space.format('#', 'Artist', 'Song', 'Album'))
-
-        # Just to make it pwitty
-        print(space.format(
-            '-' * 3,
-            '-' * 25,
-            '-' * 30,
-            '-' * 30
-        ))
-
-        for index, song in enumerate(self._data['tracks']):
-            if index == limit:
+        for index, song in enumerate(data['tracks']):
+            if index == self._limit:
                 break
 
             if sys.version_info >= (3, 0):
@@ -57,27 +48,46 @@ class Spotipy:
                 song_name = song['name'][:30].encode('utf-8')
                 album_name = song['album']['name'][:30].encode('utf-8')
 
-            print(space.format(
-                '%d.' % (index + 1),
-                '%s' % artist_name,
-                '%s' % song_name,
-                '%s' % album_name
-            ))
-
-            # Save spotify uri and song for later use
             self._songs[index + 1] = {
                 'href': song['href'],
-                'song': '%s - %s' % (artist_name, song_name)
+                'artist': artist_name,
+                'song': song_name,
+                'album': album_name
             }
 
-            # Sleep's just for the sexy output
-            time.sleep(0.01)
+    def get_songs(self):
+        return self._songs
+
+    # List all. Limit if needed
+    def list(self):
+        list = []
+        space = '{0:3} | {1:25} | {2:30} | {3:30}'
+
+        list.append(space.format('#', 'Artist', 'Song', 'Album'))
+
+        # Just to make it pwitty
+        list.append(space.format(
+            '-' * 3,
+            '-' * 25,
+            '-' * 30,
+            '-' * 30
+        ))
+
+        for i in self.get_songs():
+            list.append(space.format(
+                '%d.' % i,
+                '%s' % self.get_songs()[i]['artist'],
+                '%s' % self.get_songs()[i]['song'],
+                '%s' % self.get_songs()[i]['album']
+            ))
+
+        return list
 
     def _get_song_uri_at_index(self, index):
         return str(self._songs[index]['href'])
 
     def _get_song_name_at_index(self, index):
-        return str(self._songs[index]['song'])
+        return str('%s - %s' % (self._songs[index]['artist'], self._songs[index]['song']))
 
     def listen(self, index):
         raise NotImplementedError()
@@ -104,16 +114,16 @@ class Spotipy:
         raise NotImplementedError()
 
 
-def get_spotipy_class_by_platform():
+def get_pytify_class_by_platform():
     if 'linux' in platform:
-        return LinuxSpotipy
+        return LinuxPytify
     elif 'darwin' in platform:
-        return DarwinSpotipy
+        return DarwinPytify
     else:
         raise Exception("%s is not supported." % platform)
 
 
-class DarwinSpotipy(Spotipy):
+class DarwinPytify(Pytifylib):
     def __init__(self):
         """
             Check if there is a Spotify process running and if not, run Spotify.
@@ -126,7 +136,7 @@ class DarwinSpotipy(Spotipy):
                 "-e", "end tell"
                 ]).strip())
             if count == 0:
-                print "\n[OPENING SPOTIFY] The Spotify app was not open.\n"
+                print("\n[OPENING SPOTIFY] The Spotify app was not open.\n")
                 self._make_osascript_call("tell application \"Spotify\" to activate")
         except Exception:
             sys.exit("You don't have Spotify installed. Please install it.")
@@ -141,7 +151,6 @@ class DarwinSpotipy(Spotipy):
     def listen(self, index):
         uri = self._get_song_uri_at_index(index)
         self._make_osascript_call('tell app "Spotify" to play track "%s"' % uri)
-        print('\nPlaying: %s \n' % self._get_song_name_at_index(index))
 
     def next(self):
         self._make_osascript_call('tell app "Spotify" to next track')
@@ -156,7 +165,7 @@ class DarwinSpotipy(Spotipy):
         self._make_osascript_call('tell app "Spotify" to pause')
 
 
-class LinuxSpotipy(Spotipy):
+class LinuxPytify(Pytifylib):
     def __init__(self):
         import dbus
 
@@ -173,7 +182,6 @@ class LinuxSpotipy(Spotipy):
     def listen(self, index):
         uri = self._get_song_uri_at_index(index)
         subprocess.call('spotify %s > /dev/null 2>&1' % uri, shell=True)
-        print('\nPlaying: %s \n' % self._get_song_name_at_index(index))
 
     def next(self):
         self.interface.Next()

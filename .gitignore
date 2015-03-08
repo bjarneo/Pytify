@@ -2,3 +2,5 @@
 .idea/*
 *.swp
 *.swu
+dist/
+pytify.egg-info/
