@@ -11,7 +11,7 @@ Supports both python 2 and 3. <br>
 
 ## Installation
 ```python
-$ sudo pip install --pre pytify
+$ sudo pip install pytify
 ```
 
 ## Or clone the repo
