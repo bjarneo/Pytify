@@ -6,7 +6,7 @@ Should work in Linux and OS X.<br>
 Supports both python 2 and 3. <br>
 
 ![Image of terminal]
-(http://i.imgur.com/EpUDMJo.gif)
+(http://i.imgur.com/zlt3f8P.gif)
 
 
 ## Installation
