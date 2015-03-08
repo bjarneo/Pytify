@@ -18,8 +18,11 @@ class Menu(object):
         self.position = 2
         self.items = items
         self.items.append(' ')
-        self.items.append('<UP> and <DOWN> to navigate. <Enter> to select song. <Esc> for search.')
-        self.items.append('<LEFT> and <RIGHT> for prev/next song. <SPACEBAR> for play/pause.')
+        self.items.append('<UP> and <DOWN> to navigate between songs.')
+        self.items.append('<Enter> to select song.')
+        self.items.append('<Esc> for search.')
+        self.items.append('<LEFT> and <RIGHT> for prev/next song.')
+        self.items.append('<SPACEBAR> for play/pause.')
 
     def navigate(self, n):
         self.position += n
