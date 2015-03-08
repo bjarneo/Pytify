@@ -60,10 +60,7 @@ class Menu(object):
             key = self.window.getch()
 
             if key in [curses.KEY_ENTER, ord('\n')]:
-                if self.position == len(self.items) - 1:
-                    break
-                else:
-                    self.sptfy.listen(int(self.position - 1))
+                self.sptfy.listen(int(self.position - 1))
 
             elif key == curses.KEY_UP:
                 self.navigate(-1)
