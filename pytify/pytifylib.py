@@ -7,7 +7,7 @@ import sys
 # Fetch songs with spotify api
 class Pytifylib:
     # Api url
-    url = 'https://ws.spotify.com/search/1/track.json?q='
+    url = 'https://api.spotify.com/v1/search?q=%s&type=track,artist'
 
     # hold songs
     _songs = {}
@@ -15,16 +15,14 @@ class Pytifylib:
     # history
     _history = []
 
-    # data
-    _data = None
-
     # limit output songs
     _limit = 15
 
     # Search for song / album / artist
     def search(self, query):
         try:
-            response = requests.get(self.url + query)
+            search = '+'.join(query.split())
+            response = requests.get(self.url % search)
 
             self._history.append(query)
 
@@ -33,9 +31,7 @@ class Pytifylib:
             print('Search went wrong? Please try again.')
 
     def set_songs(self, data):
-        self._data = data
-
-        for index, song in enumerate(data['tracks']):
+        for index, song in enumerate(data['tracks']['items']):
             if index == self._limit:
                 break
 
@@ -49,7 +45,7 @@ class Pytifylib:
                 album_name = song['album']['name'][:30].encode('utf-8')
 
             self._songs[index + 1] = {
-                'href': song['href'],
+                'href': song['uri'],
                 'artist': artist_name,
                 'song': song_name,
                 'album': album_name
