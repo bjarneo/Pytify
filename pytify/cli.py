@@ -23,7 +23,6 @@ class App:
         main_menu = menu.Menu(self.list, stdscreen)
         main_menu.display()
 
-
     def run(self):
         parser = argparse.ArgumentParser(description='Spotify remote')
 
