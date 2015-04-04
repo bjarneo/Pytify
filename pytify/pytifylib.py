@@ -22,13 +22,28 @@ class Pytifylib:
     def search(self, query):
         try:
             search = '+'.join(query.split())
-            response = requests.get(self.url % search)
+
+            try:
+                response = requests.get(self.url % search)
+            except requests.exceptions.Timeout:
+                response = requests.get(self.url % search)
+            except requests.exceptions.TooManyRedirects:
+                print('Something wrong with your request. Try again.')
+
+                return False
+            except requests.exceptions.RequestException as e:
+                print(e)
+                sys.exit(1)
 
             self._history.append(query)
 
             self.set_songs(data=response.json())
+
+            return True
         except StandardError:
             print('Search went wrong? Please try again.')
+
+            return False
 
     def set_songs(self, data):
         for index, song in enumerate(data['tracks']['items']):
