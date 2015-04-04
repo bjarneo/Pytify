@@ -191,8 +191,9 @@ class LinuxPytify(Pytifylib):
             sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
 
     def listen(self, index):
-        uri = self._get_song_uri_at_index(index)
-        subprocess.call('spotify %s > /dev/null 2>&1' % uri, shell=True)
+        self.interface.OpenUri(
+            self._get_song_uri_at_index(index)
+        )
 
     def next(self):
         self.interface.Next()
