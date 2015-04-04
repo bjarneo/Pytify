@@ -68,9 +68,10 @@ class App:
                 search_input = raw_input('What artist / song are you searching for?\n> ')
 
             if search_input:
-                self.pytify.search(search_input)
+                search = self.pytify.search(search_input)
 
-                self.menu(list=self.pytify.list())
+                if search is not False:
+                    self.menu(list=self.pytify.list())
 
 
 def main():
