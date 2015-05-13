@@ -131,7 +131,7 @@ def get_pytify_class_by_platform():
     elif 'darwin' in platform:
         return DarwinPytify
     else:
-        raise Exception("%s is not supported." % platform)
+        raise Exception('%s is not supported.' % platform)
 
 
 class DarwinPytify(Pytifylib):
