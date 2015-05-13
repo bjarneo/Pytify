@@ -141,16 +141,16 @@ class DarwinPytify(Pytifylib):
         """
         try:
             count = int(subprocess.check_output([
-                "osascript",
-                "-e", "tell application \"System Events\"",
-                "-e", "count (every process whose name is \"Spotify\")",
-                "-e", "end tell"
+                'osascript',
+                '-e', 'tell application "System Events"',
+                '-e', 'count (every process whose name is "Spotify")',
+                '-e', 'end tell'
                 ]).strip())
             if count == 0:
-                print("\n[OPENING SPOTIFY] The Spotify app was not open.\n")
-                self._make_osascript_call("tell application \"Spotify\" to activate")
+                print('\n[OPENING SPOTIFY] The Spotify app was not open.\n')
+                self._make_osascript_call('tell application "Spotify" to activate')
         except Exception:
-            sys.exit("You don't have Spotify installed. Please install it.")
+            sys.exit('You don\'t have Spotify installed. Please install it.')
 
     def _make_osascript_call(self, command):
         subprocess.call([
