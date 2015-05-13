@@ -6,10 +6,12 @@ from pytifylib import get_pytify_class_by_platform
 """
  TODO: Rewrite this crappy menu class
 """
+
+
 class Menu(object):
     def __init__(self, items, stdscreen):
         self.pytify = get_pytify_class_by_platform()()
-        self.window = stdscreen.subwin(0,0)
+        self.window = stdscreen.subwin(0, 0)
         self.window.keypad(1)
         self.panel = panel.new_panel(self.window)
         self.panel.hide()
