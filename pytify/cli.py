@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import pytifylib
-import menu
+from strategy import get_pytify_class_by_platform
+from menu import Menu
 import argparse
 import sys
 import curses
@@ -8,7 +9,7 @@ import curses
 
 class App:
     def __init__(self):
-        self.pytify = pytifylib.get_pytify_class_by_platform()()
+        self.pytify = get_pytify_class_by_platform()()
 
         self.run()
 
@@ -20,7 +21,7 @@ class App:
     def menu_items(self, stdscreen):
         curses.curs_set(0)
 
-        main_menu = menu.Menu(self.list, stdscreen)
+        main_menu = Menu(self.list, stdscreen)
         main_menu.display()
 
     def run(self):
