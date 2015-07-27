@@ -1,6 +1,8 @@
 Pytify
 =============
 
+[![Code Climate](https://codeclimate.com/github/bjarneo/Pytify/badges/gpa.svg)](https://codeclimate.com/github/bjarneo/Pytify)
+
 Search and start songs from command line.<br>
 Should work in Linux and OS X.<br>
 Supports both python 2 and 3. <br>
