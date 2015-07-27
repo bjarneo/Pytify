@@ -10,10 +10,10 @@ class DarwinPytify(Pytifylib):
         """
         try:
             count = int(subprocess.check_output([
-                'osascript',
-                '-e', 'tell application "System Events"',
-                '-e', 'count (every process whose name is "Spotify")',
-                '-e', 'end tell'
+                    'osascript',
+                    '-e', 'tell application "System Events"',
+                    '-e', 'count (every process whose name is "Spotify")',
+                    '-e', 'end tell'
                 ]).strip())
             if count == 0:
                 print('\n[OPENING SPOTIFY] The Spotify app was not open.\n')
