@@ -10,7 +10,9 @@ class LinuxPytify(Pytifylib):
                 dbus.SessionBus().get_object(
                     'org.mpris.MediaPlayer2.spotify',
                     '/org/mpris/MediaPlayer2'
-                    ), 'org.mpris.MediaPlayer2.Player')
+                ),
+                'org.mpris.MediaPlayer2.Player'
+            )
 
         except dbus.exceptions.DBusException:
             sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
