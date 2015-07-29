@@ -1,11 +1,10 @@
 import sys
+import dbus
 from pytifylib import Pytifylib
 
 
 class LinuxPytify(Pytifylib):
     def __init__(self):
-        import dbus
-
         try:
             self.interface = dbus.Interface(
                 dbus.SessionBus().get_object(
