@@ -1,6 +1,6 @@
 import sys
 import subprocess
-from .pytifylib import Pytifylib
+from pytifylib import Pytifylib
 
 
 class DarwinPytify(Pytifylib):

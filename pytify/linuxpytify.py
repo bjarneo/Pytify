@@ -1,6 +1,6 @@
 import sys
 import dbus
-from .pytifylib import Pytifylib
+from pytifylib import Pytifylib
 
 
 class LinuxPytify(Pytifylib):
