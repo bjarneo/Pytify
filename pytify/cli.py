@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import .pytifylib
 from .strategy import get_pytify_class_by_platform
 from menu import Menu
 import argparse
