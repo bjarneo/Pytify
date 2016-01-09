@@ -2,12 +2,12 @@ from sys import platform
 
 def get_pytify_class_by_platform():
     if 'linux' in platform:
-        from linuxpytify import LinuxPytify
+        from linux import Linux
 
-        return LinuxPytify
+        return Linux
     elif 'darwin' in platform:
-        from darwinpytify import DarwinPytify
+        from darwin import Darwin
 
-        return DarwinPytify
+        return Darwin
     else:
         raise Exception('%s is not supported.' % platform)

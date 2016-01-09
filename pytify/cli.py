@@ -81,3 +81,4 @@ def main():
 
     except KeyboardInterrupt:
         print('\n Closing application...\n')
+main()

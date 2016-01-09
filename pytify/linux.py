@@ -3,7 +3,7 @@ import dbus
 from pytifylib import Pytifylib
 
 
-class LinuxPytify(Pytifylib):
+class Linux(Pytifylib):
     def __init__(self):
         try:
             self.interface = dbus.Interface(

@@ -3,7 +3,7 @@ import subprocess
 from pytifylib import Pytifylib
 
 
-class DarwinPytify(Pytifylib):
+class Darwin(Pytifylib):
     def __init__(self):
         """
             Check if there is a Spotify process running and if not, run Spotify.
