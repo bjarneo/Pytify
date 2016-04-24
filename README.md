@@ -17,14 +17,14 @@ $ sudo pip install pytify
 ```
 
 ## Or clone the repo
-```python
+```bash
 $ git clone https://github.com/bjarneo/pytify.git
 $ cd pytify
 $ sudo python setup.py install
 ```
 
 ### Usage
-```python
+```bash
 # To start the app type
 $ pytify
 
