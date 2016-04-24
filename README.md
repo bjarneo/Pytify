@@ -12,7 +12,7 @@ Supports both python 2 and 3. <br>
 
 
 ## Installation
-```python
+```bash
 $ sudo pip install pytify
 ```
 
