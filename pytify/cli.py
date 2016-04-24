@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import pytifylib
-from strategy import get_pytify_class_by_platform
-from menu import Menu
+from __future__ import absolute_import
+import pytify.pytifylib
+from pytify.strategy import get_pytify_class_by_platform
+from pytify.menu import Menu
 import argparse
 import sys
 import curses

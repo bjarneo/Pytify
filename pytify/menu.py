@@ -1,6 +1,7 @@
+from __future__ import absolute_import
 import curses
 from curses import panel
-from strategy import get_pytify_class_by_platform
+from pytify.strategy import get_pytify_class_by_platform
 
 
 """
