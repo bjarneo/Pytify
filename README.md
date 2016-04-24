@@ -51,4 +51,4 @@ Contributions are appreciated.
 - [@adam410](https://github.com/adam410/) - OS X issue
 - [@Newky](https://github.com/Newky) - Better structure
 - [@ymski](https://github.com/ymski) - OS X
-- [@wohlfea](https://github.com/wohlfea) - Make it compatible with python 3.5
+- [@wohlfea](https://github.com/wohlfea) - Made it compatible with python 3.5
