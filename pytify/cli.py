@@ -6,7 +6,7 @@ from pytify.menu import Menu
 import argparse
 import sys
 import curses
-
+import readline
 
 class App:
     def __init__(self):
@@ -63,6 +63,7 @@ class App:
     def interaction(self):
         self.intro()
 
+        readline.parse_and_bind('tab: autocomplete')
         while 1:
             if sys.version_info >= (3, 0):
                 search_input = input('What artist / song are you searching for?\n> ')
@@ -75,6 +76,8 @@ class App:
                 if search is not False:
                     self.menu(list=self.pytify.list())
 
+def autocomplete():
+    pass
 
 def main():
     try:

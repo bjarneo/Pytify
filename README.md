@@ -40,7 +40,7 @@ $ pytify -pp
 
 ### Dependency
 ```bash
-pip install requests
+pip install requests gnureadline
 ```
 
 ### Contributing
