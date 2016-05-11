@@ -52,3 +52,4 @@ Contributions are appreciated.
 - [@Newky](https://github.com/Newky) - Better structure
 - [@ymski](https://github.com/ymski) - OS X
 - [@wohlfea](https://github.com/wohlfea) - Made it compatible with python 3.5
+- [@ddiddi](https://github.com/ddiddi) - Added search phrase history browsing. (auto complete)
