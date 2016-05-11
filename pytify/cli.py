@@ -6,7 +6,6 @@ from pytify.menu import Menu
 import argparse
 import sys
 import curses
-import rlcompleter
 import readline
 
 class App:
