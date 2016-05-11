@@ -77,7 +77,7 @@ class App:
                 if search is not False:
                     self.menu(list=self.pytify.list())
 
-def autocomplete:
+def autocomplete():
     pass
 
 def main():
