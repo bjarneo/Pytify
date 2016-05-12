@@ -40,7 +40,9 @@ $ pytify -pp
 
 ### Dependency
 ```bash
-pip install requests gnureadline
+* requests
+* gnureadline
+* prompt-toolkit
 ```
 
 ### Contributing
