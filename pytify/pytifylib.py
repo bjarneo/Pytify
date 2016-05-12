@@ -5,7 +5,7 @@ import sys
 # Fetch songs with spotify api
 class Pytifylib:
     # Api url
-    url = 'https://api.spotify.com/v1/search?q=%s&type=track,artist'
+    url = 'https://api.spotify.com/v1/search?q=%s&type=%s'
 
     # hold songs
     _songs = {}
@@ -16,28 +16,34 @@ class Pytifylib:
     # limit output songs
     _limit = 15
 
+    # query
+    def query(self, query):
+        try:
+            data = self.search(query)
+
+            self._history.append(query)
+
+            self.set_songs(data=data)
+
+            return True
+        except Exception as e:
+            print(e)
+
+            return False
+
     # Search for song / album / artist
-    def search(self, query):
+    def search(self, query, type='track,artist'):
         try:
             search = '+'.join(query.split())
 
             try:
-                response = requests.get(self.url % search)
-            except requests.exceptions.Timeout:
-                response = requests.get(self.url % search)
-            except requests.exceptions.TooManyRedirects:
-                print('Something wrong with your request. Try again.')
-
-                return False
+                response = requests.get(self.url % (search, type))
             except requests.exceptions.RequestException as e:
                 print(e)
+
                 sys.exit(1)
 
-            self._history.append(query)
-
-            self.set_songs(data=response.json())
-
-            return True
+            return response.json()
         except StandardError:
             print('Search went wrong? Please try again.')
 
