@@ -9,7 +9,7 @@ Linux and OS X support.
 Python 3 support. For Python 2 support use this release: [v2.1.0](https://github.com/bjarneo/Pytify/tree/v2.1.0)
 
 ![Image of terminal]
-(http://i.imgur.com/zlt3f8P.gif)
+(http://i.imgur.com/I1uvoVx.gif)
 
 
 ## Installation
