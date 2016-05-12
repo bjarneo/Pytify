@@ -55,11 +55,10 @@ class App:
         while 1:
             search_input = custom_prompt()
 
-            if search_input:
-                search = self.pytify.query(search_input)
+            search = self.pytify.query(search_input)
 
-                if search is not False:
-                    self.menu(list=self.pytify.list())
+            if search is not False:
+                self.menu(list=self.pytify.list())
 
 def main():
     try:

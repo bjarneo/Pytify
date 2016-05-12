@@ -54,14 +54,9 @@ class Pytifylib:
             if index == self._limit:
                 break
 
-            if sys.version_info >= (3, 0):
-                artist_name = song['artists'][0]['name'][:25]
-                song_name = song['name'][:30]
-                album_name = song['album']['name'][:30]
-            else:
-                artist_name = song['artists'][0]['name'][:25].encode('utf-8')
-                song_name = song['name'][:30].encode('utf-8')
-                album_name = song['album']['name'][:30].encode('utf-8')
+            artist_name = song['artists'][0]['name'][:25]
+            song_name = song['name'][:30]
+            album_name = song['album']['name'][:30]
 
             self._songs[index + 1] = {
                 'href': song['uri'],
