@@ -3,10 +3,11 @@ from __future__ import absolute_import
 import pytify.pytifylib
 from pytify.strategy import get_pytify_class_by_platform
 from pytify.menu import Menu
+from pytify.prompt import custom_prompt
 import argparse
 import sys
 import curses
-import readline
+
 
 class App:
     def __init__(self):
@@ -50,38 +51,20 @@ class App:
         else:
             self.interaction()
 
-    def intro(self):
-        print('################################################')
-        print('#         ____ _  _ ____ __ ____ _  _          #')
-        print('#        (  _ ( \/ (_  _(  (  __( \/ )         #')
-        print('#         ) __/)  /  )(  )( ) _) )  /          #')
-        print('#        (__) (__/  (__)(__(__) (__/           #')
-        print('#                 by bjarneo                   #')
-        print('#    <http://www.github.com/bjarneo/Pytify>    #')
-        print('################################################')
-
     def interaction(self):
-        self.intro()
-
-        readline.parse_and_bind('tab: autocomplete')
         while 1:
-            if sys.version_info >= (3, 0):
-                search_input = input('What artist / song are you searching for?\n> ')
-            else:
-                search_input = raw_input('What artist / song are you searching for?\n> ')
+            search_input = custom_prompt()
 
             if search_input:
-                search = self.pytify.search(search_input)
+                search = self.pytify.query(search_input)
 
                 if search is not False:
                     self.menu(list=self.pytify.list())
 
-def autocomplete():
-    pass
-
 def main():
     try:
         App()
-
+    except EOFError:
+        print('\n Closing application...\n')
     except KeyboardInterrupt:
         print('\n Closing application...\n')

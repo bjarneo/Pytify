@@ -4,3 +4,5 @@
 *.swu
 dist/
 pytify.egg-info/
+run.py
+.pytify-search-history
