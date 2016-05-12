@@ -49,7 +49,6 @@ $ pytify -pp
 ### Dependency
 ```bash
 * requests
-* gnureadline
 * prompt-toolkit
 ```
 
