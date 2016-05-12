@@ -23,7 +23,8 @@ class Menu(object):
         self.song_length = len(items) - 1
 
         self.items.append(' ')
-        self.items.append('Keyboard shortcuts: ')
+        self.items.append('Keyboard shortcuts')
+        self.items.append('==================')
         self.items.append('Navigation (Vim bindings):')
         self.items.append('  <K> <up> ')
         self.items.append('  <J> <down> ')
