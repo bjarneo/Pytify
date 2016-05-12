@@ -23,11 +23,15 @@ class Menu(object):
         self.song_length = len(items) - 1
 
         self.items.append(' ')
-        self.items.append('<UP> and <DOWN> for navigation.')
-        self.items.append('<Enter> to select song.')
-        self.items.append('<Esc> for search.')
-        self.items.append('<LEFT> and <RIGHT> for prev/next song.')
-        self.items.append('<SPACEBAR> for play/pause.')
+        self.items.append('Keyboard shortcuts: ')
+        self.items.append('Navigation (Vim bindings):')
+        self.items.append('  <K> <up> ')
+        self.items.append('  <J> <down> ')
+        self.items.append('  <H> <left> ')
+        self.items.append('  <L> <right> ')
+        self.items.append('Play: <P>')
+        self.items.append('Search: <S>')
+        self.items.append('Play/Pause: <SPACEBAR>')
 
     def navigate(self, n):
         self.position += n
@@ -56,27 +60,27 @@ class Menu(object):
 
             key = self.window.getch()
 
-            if key in [curses.KEY_ENTER, ord('\n')]:
+            if key == ord('p'):
                 self.pytify.listen(int(self.position - 1))
 
-            elif key == curses.KEY_UP:
+            elif key == ord('k'):
                 self.navigate(-1)
 
-            elif key == curses.KEY_DOWN:
+            elif key == ord('j'):
                 self.navigate(1)
 
-            elif key == curses.KEY_LEFT:
+            elif key == ord('h'):
                 self.pytify.prev()
 
-            elif key == curses.KEY_RIGHT:
+            elif key == ord('l'):
                 self.pytify.next()
 
             # spacebar
-            elif key == 32:
+            elif key == ord(' '):
                 self.pytify.play_pause()
 
-            # escape
-            elif key == 27:
+            # search
+            elif key == ord('s'):
                 break
 
         self.window.clear()
