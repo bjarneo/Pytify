@@ -3,9 +3,10 @@ Pytify
 
 [![Code Climate](https://codeclimate.com/github/bjarneo/Pytify/badges/gpa.svg)](https://codeclimate.com/github/bjarneo/Pytify)
 
-Search and start songs from command line.<br>
-Should work in Linux and OS X.<br>
-Supports both python 2 and 3. <br>
+Search and start songs from the CLI.  
+Linux and OS X support.
+
+Python 3 support. For Python 2 support use this release: [v2.1.0](https://github.com/bjarneo/Pytify/tree/v2.1.0)
 
 ![Image of terminal]
 (http://i.imgur.com/zlt3f8P.gif)
@@ -16,7 +17,14 @@ Supports both python 2 and 3. <br>
 $ sudo pip install pytify
 ```
 
-## Or clone the repo
+## Features
+* Auto suggest (based on history)
+* Search history
+* Search and play songs
+* CLI commands
+* VIM navigation bindings
+
+## Clone repo
 ```bash
 $ git clone https://github.com/bjarneo/pytify.git
 $ cd pytify
