@@ -60,26 +60,31 @@ class Menu(object):
 
             key = self.window.getch()
 
+            # Start song
             if key == ord('p'):
                 self.pytify.listen(int(self.position - 1))
 
+            # Up
             elif key == ord('k'):
                 self.navigate(-1)
 
+            # Down
             elif key == ord('j'):
                 self.navigate(1)
 
+            # Left
             elif key == ord('h'):
                 self.pytify.prev()
 
+            # Rights
             elif key == ord('l'):
                 self.pytify.next()
 
-            # spacebar
+            # Play/Pause
             elif key == ord(' '):
                 self.pytify.play_pause()
 
-            # search
+            # Search
             elif key == ord('s'):
                 break
 
