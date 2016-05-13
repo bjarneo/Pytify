@@ -28,7 +28,7 @@ def completer():
     for name in history:
         list.append(name)
 
-    return WordCompleter(set(list))
+    return WordCompleter(set(list), ignore_case=True)
 
 def get_bottom_toolbar_tokens(cli):
     return [
