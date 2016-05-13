@@ -19,6 +19,7 @@ $ sudo pip install pytify
 
 ## Features
 * Auto suggest (based on history)
+* Tab through history
 * Search history
 * Search and play songs
 * CLI commands
