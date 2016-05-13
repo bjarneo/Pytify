@@ -6,9 +6,8 @@ from prompt_toolkit.history import FileHistory
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.token import Token
 from prompt_toolkit.styles import style_from_dict
+from prompt_toolkit.contrib.completers import WordCompleter
 
-
-history = FileHistory('.pytify-search-history')
 
 style = style_from_dict({
     Token.Username:  '#81b71a italic',
@@ -20,6 +19,16 @@ style = style_from_dict({
     Token.SelectedText: 'reverse underline',
     Token.Toolbar: '#e6e6e6 bg:#262626',
 })
+
+history = FileHistory('.pytify-search-history')
+
+def completer():
+    list = []
+
+    for name in history:
+        list.append(name)
+
+    return WordCompleter(set(list))
 
 def get_bottom_toolbar_tokens(cli):
     return [
@@ -44,5 +53,7 @@ def custom_prompt():
         enable_history_search=True,
         on_abort=AbortAction.RETRY,
         get_bottom_toolbar_tokens=get_bottom_toolbar_tokens,
+        completer=completer(),
+        complete_while_typing=True,
         style=style
     )
