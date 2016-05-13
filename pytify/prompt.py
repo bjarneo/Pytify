@@ -11,24 +11,15 @@ from prompt_toolkit.styles import style_from_dict
 history = FileHistory('.pytify-search-history')
 
 style = style_from_dict({
-    # User input.
-    # Token:          '#ff0066',
-
-    # Prompt.
     Token.Username:  '#81b71a italic',
     Token.At:        '#999999',
     Token.Host:      '#81b71a',
     Token.Separator: '#81b71a',
     Token.Text:      '#e6e6e6',
     Token.Arrow:     '#999999',
-
-    # Make a selection reverse/underlined.
-    # (Use Control-Space to select.)
     Token.SelectedText: 'reverse underline',
-
     Token.Toolbar: '#e6e6e6 bg:#262626',
 })
-
 
 def get_bottom_toolbar_tokens(cli):
     return [
