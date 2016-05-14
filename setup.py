@@ -1,12 +1,12 @@
 from setuptools import setup
 
-__version__ = '3.1.2'
+__version__ = '3.1.3'
 
 setup(
     name='pytify',
     version=__version__,
     description='Spotify remote. Search, start and navigate through songs.',
-    long_description=open('README.md').read(),
+    long_description='https://github.com/bjarneo/pytify',
     url='https://github.com/bjarneo/pytify',
     download_url='https://pypi.python.org/pypi/pytify',
     author='Bjarne Oeverli',
