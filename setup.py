@@ -13,7 +13,10 @@ setup(
     license='MIT',
     keywords='spotify pytify song search curses',
     packages=['pytify'],
-    install_requires=['requests','prompt-toolkit'],
+    install_requires=[
+        'requests>=2.4.3',
+        'prompt-toolkit==0.52'
+    ],
     entry_points={
         'console_scripts': [
             'pytify=pytify.cli:main'
