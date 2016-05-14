@@ -6,6 +6,7 @@ setup(
     name='pytify',
     version=__version__,
     description='Spotify remote. Search, start and navigate through songs.',
+    long_description=open('README.md').read(),
     url='https://github.com/bjarneo/pytify',
     download_url='https://pypi.python.org/pypi/pytify',
     author='Bjarne Oeverli',
