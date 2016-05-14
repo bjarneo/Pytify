@@ -7,7 +7,7 @@ setup(
     version=__version__,
     description='Spotify remote. Search, start and navigate through songs.',
     url='https://github.com/bjarneo/pytify',
-    url='https://pypi.python.org/pypi/pytify',
+    download_url='https://pypi.python.org/pypi/pytify',
     author='Bjarne Oeverli',
     author_email='bjarne.oeverli@gmail.com',
     license='MIT',
