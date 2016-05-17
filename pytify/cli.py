@@ -7,6 +7,7 @@ from pytify.prompt import custom_prompt
 import argparse
 import sys
 import curses
+import pkg_resources
 
 
 class App:
@@ -51,11 +52,16 @@ class App:
         else:
             self.interaction()
 
+    def get_package_name(self):
+        return pkg_resources.require('pytify')[0]
+
     def interaction(self):
+        print('%s [https://github.com/bjarneo/Pytify]' % self.get_package_name())
+
         while 1:
             search_input = custom_prompt()
 
-            search = self.pytify.query(search_input)
+            search = self.pytify.query(search_input.encode('utf-8'))
 
             if search is not False:
                 self.menu(list=self.pytify.list())
