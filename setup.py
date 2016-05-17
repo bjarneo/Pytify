@@ -16,7 +16,7 @@ setup(
     packages=['pytify'],
     install_requires=[
         'requests>=2.4.3',
-        'prompt-toolkit==0.52'
+        'prompt-toolkit==1.0.0'
     ],
     entry_points={
         'console_scripts': [
