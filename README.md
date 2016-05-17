@@ -45,6 +45,9 @@ $ pytify -p
 
 # play and pause song
 $ pytify -pp
+
+# Current playing song (linux only)
+$ pytify -c
 ```
 
 ### Dependency

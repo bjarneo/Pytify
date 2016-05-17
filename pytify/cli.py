@@ -34,6 +34,7 @@ class App:
         parser.add_argument('-p', help='for previous song', action='store_true')
         parser.add_argument('-pp', help='for play and pause song', action='store_true')
         parser.add_argument('-s', help='stop music', action='store_true')
+        parser.add_argument('-c', help='current playing', action='store_true')
 
         args = parser.parse_args()
 
@@ -48,6 +49,9 @@ class App:
 
         elif args.s:
             self.pytify.stop()
+
+        elif args.c:
+            print(self.pytify.get_current_playing())
 
         else:
             self.interaction()

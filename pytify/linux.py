@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 import sys
 import dbus
 from pytify.pytifylib import Pytifylib
+from pytify.dbus.metadata import Metadata
 
 
 class Linux(Pytifylib):
@@ -14,6 +15,8 @@ class Linux(Pytifylib):
                 ),
                 'org.mpris.MediaPlayer2.Player'
             )
+
+            self.metadata = Metadata()
 
         except dbus.exceptions.DBusException:
             sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
@@ -34,3 +37,6 @@ class Linux(Pytifylib):
 
     def pause(self):
         self.interface.Stop()
+
+    def get_current_playing(self):
+        return self.metadata.get_current_playing()

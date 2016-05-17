@@ -123,3 +123,6 @@ class Pytifylib:
 
     def pause(self):
         raise NotImplementedError()
+
+    def get_current_playing(self):
+        return ''
