@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 import curses
 from curses import panel
 from pytify.strategy import get_pytify_class_by_platform
