@@ -61,7 +61,7 @@ class App:
         while 1:
             search_input = custom_prompt()
 
-            search = self.pytify.query(search_input.encode('utf-8'))
+            search = self.pytify.query(search_input)
 
             if search is not False:
                 self.menu(list=self.pytify.list())
