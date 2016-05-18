@@ -23,8 +23,14 @@ class SongList():
         # Show shortcuts
         self.shortcuts()
 
+        # Disable echoing of keys to the screen
+        curses.noecho()
+
         # Disable blinking cursor
         curses.curs_set(False)
+
+        # Use user terminal settings
+        curses.endwin()
 
         # Display window
         self.display()
