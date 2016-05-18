@@ -2,11 +2,10 @@
 from __future__ import absolute_import, unicode_literals
 import pytify.pytifylib
 from pytify.strategy import get_pytify_class_by_platform
-from pytify.menu import Menu
+from pytify.song_list import SongList
 from pytify.prompt import custom_prompt
 import argparse
 import sys
-import curses
 import pkg_resources
 
 
@@ -17,15 +16,7 @@ class App:
         self.run()
 
     def menu(self, list):
-        self.list = list
-
-        curses.wrapper(self.menu_items)
-
-    def menu_items(self, stdscreen):
-        curses.curs_set(0)
-
-        main_menu = Menu(self.list, stdscreen)
-        main_menu.display()
+        SongList(list)
 
     def run(self):
         parser = argparse.ArgumentParser(description='Spotify remote')

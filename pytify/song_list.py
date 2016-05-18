@@ -3,25 +3,33 @@ import curses
 from curses import panel
 from pytify.strategy import get_pytify_class_by_platform
 
-
-"""
- TODO: Rewrite this crappy menu class
-"""
-
-
-class Menu(object):
-    def __init__(self, items, stdscreen):
+class SongList():
+    def __init__(self, items):
         self.pytify = get_pytify_class_by_platform()()
-        self.window = stdscreen.subwin(0, 0)
+        self.items = items
+
+        self.position = 2
+        self.song_length = len(items) - 1
+
+        # Init curses screen
+        self.window = curses.initscr()
+
         self.window.keypad(1)
+
         self.panel = panel.new_panel(self.window)
         self.panel.hide()
         panel.update_panels()
 
-        self.position = 2
-        self.items = items
-        self.song_length = len(items) - 1
+        # Show shortcuts
+        self.shortcuts()
 
+        # Disable blinking cursor
+        curses.curs_set(False)
+
+        # Display window
+        self.display()
+
+    def shortcuts(self):
         self.items.append(' ')
         self.items.append('Keyboard shortcuts')
         self.items.append('==================')
@@ -33,6 +41,7 @@ class Menu(object):
         self.items.append('Play: <P>')
         self.items.append('Search: <S>')
         self.items.append('Play/Pause: <SPACEBAR>')
+
 
     def navigate(self, n):
         self.position += n
