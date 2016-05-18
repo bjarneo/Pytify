@@ -6,5 +6,6 @@ build/
 dist/
 pytify.egg-info/
 run.py
+notify.py
 .pytify-search-history
 venv/
