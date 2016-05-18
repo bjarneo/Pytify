@@ -15,7 +15,7 @@ class App:
 
         self.run()
 
-    def menu(self, list):
+    def list_songs(self, list):
         SongList(list)
 
     def run(self):
@@ -59,7 +59,7 @@ class App:
             search = self.pytify.query(search_input)
 
             if search is not False:
-                self.menu(list=self.pytify.list())
+                self.list_songs(list=self.pytify.list())
 
 def main():
     try:
