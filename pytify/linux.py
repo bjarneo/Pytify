@@ -1,25 +1,15 @@
 from __future__ import absolute_import, unicode_literals
 import sys
-import dbus
 from pytify.pytifylib import Pytifylib
 from pytify.dbus.metadata import Metadata
+from pytify.dbus.interface import Interface
 
 
 class Linux(Pytifylib):
     def __init__(self):
-        try:
-            self.interface = dbus.Interface(
-                dbus.SessionBus().get_object(
-                    'org.mpris.MediaPlayer2.spotify',
-                    '/org/mpris/MediaPlayer2'
-                ),
-                'org.mpris.MediaPlayer2.Player'
-            )
+        self.interface = Interface.factory('org.mpris.MediaPlayer2.Player')
 
-            self.metadata = Metadata()
-
-        except dbus.exceptions.DBusException:
-            sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
+        self.metadata = Metadata()
 
     def listen(self, index):
         self.interface.OpenUri(

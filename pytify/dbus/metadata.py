@@ -1,21 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 import sys
-import dbus
+from pytify.dbus.interface import Interface
 
 
 class Metadata():
     def __init__(self):
-        try:
-            self.interface = dbus.Interface(
-                dbus.SessionBus().get_object(
-                    'org.mpris.MediaPlayer2.spotify',
-                    '/org/mpris/MediaPlayer2'
-                ),
-                'org.freedesktop.DBus.Properties'
-            )
-
-        except dbus.exceptions.DBusException:
-            sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
+        self.interface = Interface.factory('org.freedesktop.DBus.Properties')
 
     def get_metadata(self):
         return self.interface.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
