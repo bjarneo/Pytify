@@ -22,6 +22,7 @@ style = style_from_dict({
 
 history = FileHistory('.pytify-search-history')
 
+
 def completer():
     list = []
 
@@ -30,10 +31,12 @@ def completer():
 
     return WordCompleter(set(list), ignore_case=True)
 
+
 def get_bottom_toolbar_tokens(cli):
     return [
         (Token.Toolbar, ' exit: ctrl+d | clear: ctrl+c ')
     ]
+
 
 def get_prompt_tokens(cli):
     return [
@@ -44,6 +47,7 @@ def get_prompt_tokens(cli):
         (Token.Text,      'What artist / song are you searching for?'),
         (Token.Arrow,     '\n> '),
     ]
+
 
 def custom_prompt():
     return prompt(

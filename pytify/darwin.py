@@ -7,7 +7,8 @@ from pytify.pytifylib import Pytifylib
 class Darwin(Pytifylib):
     def __init__(self):
         """
-            Check if there is a Spotify process running and if not, run Spotify.
+            Check if there is a Spotify process running and if not,
+            run Spotify.
         """
         try:
             count = int(subprocess.check_output([
@@ -18,7 +19,10 @@ class Darwin(Pytifylib):
                 ]).strip())
             if count == 0:
                 print('\n[OPENING SPOTIFY] The Spotify app was not open.\n')
-                self._make_osascript_call('tell application "Spotify" to activate')
+
+                self._make_osascript_call(
+                    'tell application "Spotify" to activate'
+                )
         except Exception:
             sys.exit('You don\'t have Spotify installed. Please install it.')
 
@@ -31,7 +35,9 @@ class Darwin(Pytifylib):
 
     def listen(self, index):
         uri = self._get_song_uri_at_index(index)
-        self._make_osascript_call('tell app "Spotify" to play track "%s"' % uri)
+        self._make_osascript_call(
+            'tell app "Spotify" to play track "%s"' % uri
+        )
 
     def next(self):
         self._make_osascript_call('tell app "Spotify" to next track')

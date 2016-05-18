@@ -3,6 +3,7 @@ import curses
 from curses import panel
 from pytify.strategy import get_pytify_class_by_platform
 
+
 class SongList():
     def __init__(self, items):
         self.pytify = get_pytify_class_by_platform()()
@@ -47,7 +48,6 @@ class SongList():
         self.items.append('Play: <P>')
         self.items.append('Search: <S>')
         self.items.append('Play/Pause: <SPACEBAR>')
-
 
     def navigate(self, n):
         self.position += n

@@ -17,7 +17,9 @@ class Interface():
                 If we catch this exception, Spotify is not running.
                 Let the user know.
             """
-            sys.exit('\n Some errors occured. Try restart or start Spotify. \n')
+            sys.exit(
+                '\n Some errors occured. Try restart or start Spotify. \n'
+            )
 
         return interface
     factory = staticmethod(factory)

@@ -21,11 +21,21 @@ class App:
     def run(self):
         parser = argparse.ArgumentParser(description='Spotify remote')
 
-        parser.add_argument('-n', help='for next song', action='store_true')
-        parser.add_argument('-p', help='for previous song', action='store_true')
-        parser.add_argument('-pp', help='for play and pause song', action='store_true')
-        parser.add_argument('-s', help='stop music', action='store_true')
-        parser.add_argument('-c', help='current playing', action='store_true')
+        parser.add_argument(
+            '-n', help='for next song', action='store_true'
+        )
+        parser.add_argument(
+            '-p', help='for previous song', action='store_true'
+        )
+        parser.add_argument(
+            '-pp', help='for play and pause song', action='store_true'
+        )
+        parser.add_argument(
+            '-s', help='stop music', action='store_true'
+        )
+        parser.add_argument(
+            '-c', help='current playing', action='store_true'
+        )
 
         args = parser.parse_args()
 
@@ -51,7 +61,9 @@ class App:
         return pkg_resources.require('pytify')[0]
 
     def interaction(self):
-        print('%s [https://github.com/bjarneo/Pytify]' % self.get_package_name())
+        print(
+            '%s [https://github.com/bjarneo/Pytify]' % self.get_package_name()
+        )
 
         while 1:
             search_input = custom_prompt()
@@ -60,6 +72,7 @@ class App:
 
             if search is not False:
                 self.list_songs(list=self.pytify.list())
+
 
 def main():
     try:

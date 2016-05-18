@@ -23,4 +23,6 @@ class Metadata():
             elif key == 'xesam:artist':
                 playing['artist'] = value[0]
 
-        return '%s - %s [%s]' % (playing['artist'], playing['title'], playing['album'])
+        return '%s - %s [%s]' % (playing['artist'],
+                                 playing['title'],
+                                 playing['album'])

@@ -98,7 +98,10 @@ class Pytifylib:
         return str(self._songs[index]['href'])
 
     def _get_song_name_at_index(self, index):
-        return str('%s - %s' % (self._songs[index]['artist'], self._songs[index]['song']))
+        return str(
+            '%s - %s' % (self._songs[index]['artist'],
+                         self._songs[index]['song'])
+        )
 
     def listen(self, index):
         raise NotImplementedError()
