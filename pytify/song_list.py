@@ -81,19 +81,19 @@ class SongList():
                 self.pytify.listen(int(self.position - 1))
 
             # Up
-            elif key == ord('k'):
+            elif key == ord('k') or key == curses.KEY_UP:
                 self.navigate(-1)
 
             # Down
-            elif key == ord('j'):
+            elif key == ord('j') or key == curses.KEY_DOWN:
                 self.navigate(1)
 
             # Left
-            elif key == ord('h'):
+            elif key == ord('h') or key == curses.KEY_LEFT:
                 self.pytify.prev()
 
             # Rights
-            elif key == ord('l'):
+            elif key == ord('l') or key == curses.KEY_RIGHT:
                 self.pytify.next()
 
             # Play/Pause
