@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-import curses
+import curses, sys
 from curses import panel
 from pytify.strategy import get_pytify_class_by_platform
 
@@ -41,13 +41,14 @@ class SongList():
         self.items.append('Keyboard shortcuts')
         self.items.append('==================')
         self.items.append('Navigation (Vim bindings):')
-        self.items.append('  <K> <up> ')
-        self.items.append('  <J> <down> ')
-        self.items.append('  <H> <left> ')
-        self.items.append('  <L> <right> ')
-        self.items.append('Play: <P>')
-        self.items.append('Search: <S>')
+        self.items.append('  <k> <up> ')
+        self.items.append('  <j> <down> ')
+        self.items.append('  <h> <left> ')
+        self.items.append('  <l> <right> ')
+        self.items.append('Play: <p>')
+        self.items.append('Search: <s>')
         self.items.append('Play/Pause: <SPACEBAR>')
+        self.items.append('Quit: <q>')
 
     def navigate(self, n):
         self.position += n
@@ -103,6 +104,12 @@ class SongList():
             # Search
             elif key == ord('s'):
                 break
+            
+            # Search
+            elif key == ord('q'):
+                curses.endwin()
+                sys.exit()
+
 
         self.window.clear()
         self.panel.hide()
