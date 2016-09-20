@@ -45,7 +45,7 @@ class SongList():
         self.items.append('  <j> <down> ')
         self.items.append('  <h> <left> ')
         self.items.append('  <l> <right> ')
-        self.items.append('Play: <p>')
+        self.items.append('Play: <p> <enter>')
         self.items.append('Search: <s>')
         self.items.append('Play/Pause: <SPACEBAR>')
         self.items.append('Quit: <q>')
@@ -63,6 +63,9 @@ class SongList():
         self.panel.show()
         self.window.clear()
 
+        # Play keys.
+        play = lambda c: c == ord('p') or c == curses.KEY_ENTER or c == 10 or c == 13
+
         while True:
             self.window.refresh()
             curses.doupdate()
@@ -78,7 +81,7 @@ class SongList():
             key = self.window.getch()
 
             # Start song
-            if key == ord('p'):
+            if play(key):
                 self.pytify.listen(int(self.position - 1))
 
             # Up
@@ -104,7 +107,7 @@ class SongList():
             # Search
             elif key == ord('s'):
                 break
-            
+
             # Search
             elif key == ord('q'):
                 curses.endwin()
