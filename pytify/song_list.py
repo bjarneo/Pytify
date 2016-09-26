@@ -47,7 +47,7 @@ class SongList():
         self.items.append('  <l> <right> ')
         self.items.append('Play: <p> <enter>')
         self.items.append('Search: <s>')
-        self.items.append('Play/Pause: <SPACEBAR>')
+        self.items.append('Play/Pause: <spacebar>')
         self.items.append('Quit: <q>')
 
     def navigate(self, n):
