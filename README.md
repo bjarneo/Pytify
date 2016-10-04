@@ -17,6 +17,12 @@ Python 3 support. For Python 2 support use this release: [v2.1.0](https://github
 $ sudo pip install pytify
 ```
 
+Linux you need to install `python-dbus` package.
+```bash
+$ # Example using apt-get
+$ apt-get install python-dbus
+```
+
 ## Features
 * Auto suggest (based on history)
 * Tab through history
