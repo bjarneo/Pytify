@@ -43,8 +43,8 @@ def get_prompt_tokens(cli):
         (Token.Username,  getpass.getuser()),
         (Token.At,        '@'),
         (Token.Host,      os.uname()[1]),
-        (Token.Separator, ' :: '),
-        (Token.Text,      'What artist / song are you searching for?'),
+        (Token.Separator, ' - '),
+        (Token.Text,      'Search:'),
         (Token.Arrow,     '\n> '),
     ]
 
