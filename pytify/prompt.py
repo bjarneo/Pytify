@@ -10,7 +10,7 @@ from prompt_toolkit.contrib.completers import WordCompleter
 
 
 style = style_from_dict({
-    Token.Username:  '#81b71a italic',
+    Token.Username:  'bg:#ffffff #81b71a italic',
     Token.At:        '#999999',
     Token.Host:      '#81b71a',
     Token.Separator: '#81b71a',
