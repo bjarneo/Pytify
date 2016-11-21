@@ -4,6 +4,7 @@ import pytify.pytifylib
 from pytify.strategy import get_pytify_class_by_platform
 from pytify.song_list import SongList
 from pytify.prompt import custom_prompt
+from pytify.commander import Commander
 import argparse
 import sys
 import pkg_resources
@@ -12,6 +13,8 @@ import pkg_resources
 class App:
     def __init__(self):
         self.pytify = get_pytify_class_by_platform()()
+
+        self.command = Commander(self.pytify)
 
         self.run()
 
@@ -67,6 +70,9 @@ class App:
 
         while 1:
             search_input = custom_prompt()
+
+            if self.command.run(search_input):
+                continue
 
             search = self.pytify.query(search_input)
 
