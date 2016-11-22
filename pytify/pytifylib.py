@@ -84,12 +84,12 @@ class Pytifylib:
             '-' * 30
         ))
 
-        for i in self.get_songs():
+        for key, song in self.get_songs().items():
             list.append(space.format(
-                '%d.' % i,
-                '%s' % self.get_songs()[i]['artist'],
-                '%s' % self.get_songs()[i]['song'],
-                '%s' % self.get_songs()[i]['album']
+                '%d.' % key,
+                '%s' % song['artist'],
+                '%s' % song['song'],
+                '%s' % song['album']
             ))
 
         return list
@@ -103,9 +103,6 @@ class Pytifylib:
                          self._songs[index]['song'])
         )
 
-    def listen(self, index):
-        raise NotImplementedError()
-
     def print_history(self):
         if len(self._history) > 5:
             self._history.pop(0)
@@ -114,6 +111,9 @@ class Pytifylib:
 
         for song in self._history:
             print(song)
+
+    def listen(self, index):
+        raise NotImplementedError()
 
     def next(self):
         raise NotImplementedError()
