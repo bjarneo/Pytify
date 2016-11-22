@@ -20,7 +20,8 @@ class Commander():
             'next': 'play next song',
             'prev': 'play previous song',
             'pp': 'play or pause song',
-            'stop': 'stop'
+            'stop': 'stop',
+            'history': 'last five search results'
         }
 
     def validate(self, command):
@@ -67,5 +68,7 @@ class Commander():
         elif command == 'stop':
             self.pytify.stop()
 
+        elif command == 'history':
+            self.pytify.print_history()
 
         return True
