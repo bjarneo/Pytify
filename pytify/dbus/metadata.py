@@ -13,7 +13,7 @@ class Metadata():
     def get_current_playing(self):
         playing = {}
 
-        for key, value in self.get_metadata().iteritems():
+        for key, value in self.get_metadata().items():
             if key == 'xesam:album':
                 playing['album'] = value
 
