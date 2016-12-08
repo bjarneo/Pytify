@@ -34,7 +34,7 @@ class SongList():
         curses.endwin()
 
         # Display window
-        self.display()
+        curses.wrapper(self.display)
 
     def shortcuts(self):
         self.items.append(' ')
@@ -58,16 +58,16 @@ class SongList():
         elif self.position > self.song_length:
             self.position = self.song_length
 
-    def display(self):
+    def display(self, stdscr):
         self.panel.top()
         self.panel.show()
-        self.window.clear()
+        stdscr.clear()
 
         # Play keys.
         play = lambda c: c == ord('p') or c == curses.KEY_ENTER or c == 10 or c == 13
 
         while True:
-            self.window.refresh()
+            stdscr.refresh()
             curses.doupdate()
 
             for index, item in enumerate(self.items):
@@ -76,9 +76,9 @@ class SongList():
                 else:
                     mode = curses.A_NORMAL
 
-                self.window.addstr(index, 1, str(item), mode)
+                stdscr.addstr(index, 1, str(item), mode)
 
-            key = self.window.getch()
+            key = stdscr.getch()
 
             # Start song
             if play(key):
@@ -108,13 +108,13 @@ class SongList():
             elif key == ord('s'):
                 break
 
-            # Search
+            # Quit
             elif key == ord('q'):
                 curses.endwin()
                 sys.exit()
 
 
-        self.window.clear()
+        stdscr.clear()
         self.panel.hide()
         panel.update_panels()
         curses.doupdate()
