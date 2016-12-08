@@ -76,7 +76,7 @@ class App:
 
             search = self.pytify.query(search_input)
 
-            if search is not False:
+            if search:
                 self.list_songs(list=self.pytify.list())
 
 
