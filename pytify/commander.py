@@ -6,7 +6,7 @@ class Commander():
         self.pytify = Pytifylib
 
     def parse(self, command):
-        if command[0] != '/':
+        if command and command[0] != '/':
             return ''
 
         command = command.replace('/', '')
