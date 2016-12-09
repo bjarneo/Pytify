@@ -1,6 +1,6 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-__version__ = '3.3.0'
+__version__ = '3.3.2'
 
 setup(
     name='pytify',
@@ -13,7 +13,7 @@ setup(
     author_email='bjarne.oeverli@gmail.com',
     license='MIT',
     keywords='spotify pytify song search curses',
-    packages=['pytify'],
+    packages=find_packages(),
     install_requires=[
         'requests>=2.4.3',
         'prompt-toolkit==1.0.0'
