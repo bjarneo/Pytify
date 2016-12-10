@@ -24,6 +24,7 @@ $ apt-get install python-dbus
 ```
 
 ## Features
+* Commands
 * Auto suggest (based on history)
 * Tab through history
 * Search history
@@ -54,6 +55,20 @@ $ pytify -pp
 
 # Current playing song (linux only)
 $ pytify -c
+```
+
+Commands  
+![commands](http://i.imgur.com/r7pCYyH.png)
+```
+Commands:
+ current              print current song (currently linux only) 
+ help                 list all commands 
+ next                 play next song 
+ pp                   play or pause song 
+ stop                 stop 
+ prev                 play previous song 
+ history              last five search results 
+
 ```
 
 ### Dependency
