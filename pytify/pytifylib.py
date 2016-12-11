@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import requests
 import sys
+from pytify.history import history
 
 
 # Fetch songs with spotify api
@@ -11,9 +12,6 @@ class Pytifylib:
     # hold songs
     _songs = {}
 
-    # history
-    _history = []
-
     # limit output songs
     _limit = 15
 
@@ -21,8 +19,6 @@ class Pytifylib:
     def query(self, query):
         try:
             data = self.search(query)
-
-            self._history.append(query)
 
             self.set_songs(data=data)
 
@@ -104,13 +100,14 @@ class Pytifylib:
         )
 
     def print_history(self):
-        if len(self._history) > 5:
-            self._history.pop(0)
+        print('\nLast ten entries from history:')
 
-        print('\nLast five search results:')
+        entries = history()
 
-        for song in self._history:
-            print(song)
+        qty = len(entries)
+
+        for entry in entries[qty-10:qty]:
+            print(entry)
 
     def listen(self, index):
         raise NotImplementedError()
