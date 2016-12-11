@@ -6,6 +6,8 @@ Pytify
 Search and start songs from the CLI.  
 Linux and OS X support.
 
+*Spotify must be running in the background in order to use this cli remote*
+
 Python 3 support. For Python 2 support use this release: [v2.1.0](https://github.com/bjarneo/Pytify/tree/v2.1.0)
 
 ![Image of terminal]
