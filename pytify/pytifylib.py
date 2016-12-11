@@ -29,7 +29,7 @@ class Pytifylib:
             return False
 
     # Search for song / album / artist
-    def search(self, query, type='track,artist'):
+    def search(self, query, type='track,artist,album'):
         try:
             search = '+'.join(query.split())
 
