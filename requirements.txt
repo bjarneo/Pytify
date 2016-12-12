@@ -1,0 +1,7 @@
+### USAGE ###
+# pip install -r requirements.txt
+requests ~= 2.4.3
+prompt-toolkit == 1.0.0
+
+
+
