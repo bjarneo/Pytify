@@ -73,7 +73,13 @@ Commands:
 
 ```
 
-### Dependency
+### Install dev dependencies
+pip version must be > 9
+```bash
+$ pip install -r requirements.txt
+```
+
+### Dependencies
 ```bash
 * requests
 * prompt-toolkit
