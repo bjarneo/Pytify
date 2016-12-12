@@ -21,7 +21,7 @@ class Commander():
             'prev': 'play previous song',
             'pp': 'play or pause song',
             'stop': 'stop',
-            'history': 'last five search results'
+            'history': 'last ten history entries'
         }
 
     def validate(self, command):
