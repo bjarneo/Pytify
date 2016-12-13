@@ -37,7 +37,7 @@ $ apt-get install python-dbus
 ## Clone repo
 ```bash
 $ git clone https://github.com/bjarneo/pytify.git
-$ cd pytify
+$ cd Pytify
 $ sudo python setup.py install
 ```
 
