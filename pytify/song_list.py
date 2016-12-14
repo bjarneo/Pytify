@@ -60,7 +60,7 @@ class SongList():
         elif self.position > self.song_length:
             self.position = self.song_length
 
-    def get_terminal_size(self):
+    def exit_if_terminal_size_is_to_small(self):
         (columns, lines) = os.get_terminal_size()
 
         if columns < 99 and lines < 30:
@@ -74,7 +74,8 @@ class SongList():
         self.panel.show()
         stdscr.clear()
 
-        self.get_terminal_size()
+        # Temporary solution to warn the user
+        self.exit_if_terminal_size_is_to_small()
 
         # Play keys.
         play = lambda c: c == ord('p') or c == curses.KEY_ENTER or c == 10 or c == 13
