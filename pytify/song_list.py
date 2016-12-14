@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
-import curses, sys
+import curses
+import sys
+import os
 from curses import panel
 from pytify.strategy import get_pytify_class_by_platform
 
@@ -58,10 +60,21 @@ class SongList():
         elif self.position > self.song_length:
             self.position = self.song_length
 
+    def get_terminal_size(self):
+        (columns, lines) = os.get_terminal_size()
+
+        if columns < 99 and lines < 30:
+            msg = '\n Terminal window screen must be at least 99x30\n'
+            msg += ' Your size: %sx%s \n'
+
+            sys.exit(msg % (columns, lines))
+
     def display(self, stdscr):
         self.panel.top()
         self.panel.show()
         stdscr.clear()
+
+        self.get_terminal_size()
 
         # Play keys.
         play = lambda c: c == ord('p') or c == curses.KEY_ENTER or c == 10 or c == 13
