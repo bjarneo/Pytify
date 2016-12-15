@@ -61,7 +61,11 @@ class SongList():
             self.position = self.song_length
 
     def exit_if_terminal_size_is_to_small(self):
-        (columns, lines) = os.get_terminal_size()
+        # get_terminal_size is introduced in python 3.3
+        try:
+            (columns, lines) = os.get_terminal_size()
+        except AttributeError:
+            return
 
         if columns < 99 and lines < 30:
             msg = '\n Terminal window screen must be at least 99x30\n'
