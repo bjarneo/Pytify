@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 from __future__ import absolute_import, unicode_literals
 import pytify.pytifylib
 from pytify.strategy import get_pytify_class_by_platform
