@@ -19,7 +19,7 @@ class Interface():
                 Let the user know.
             """
             sys.exit(
-                    "\nSome errors occured. Try restart or start Spotify. Pytify is just a cli application which controls Spotify. So you can't use Pytify without Spotify.\n"
+                "\nSome errors occured. Try restart or start Spotify. Pytify is just a cli application which controls Spotify. So you can't use Pytify without Spotify.\n"
             )
 
         return interface
