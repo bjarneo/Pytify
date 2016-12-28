@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 import sys
-from spotipy import Spotify
+import spotipy
 from pytify.history import history
 
 
@@ -13,7 +13,7 @@ class Pytifylib:
     _limit = 15
 
     # spotify lib
-    _spotify = Spotify()
+    _spotify = spotipy.Spotify()
 
     # query
     def query(self, query):
@@ -33,7 +33,7 @@ class Pytifylib:
         try:
             response = self._spotify.search(q='+'.join(query.split()), type=type)
 
-        except StandardError:
+        except spotipy.client.SpotifyException:
             print('Search went wrong? Please try again.')
 
             return False
