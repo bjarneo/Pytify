@@ -1,19 +1,19 @@
 from __future__ import unicode_literals
-import requests
 import sys
+from spotipy import Spotify
 from pytify.history import history
 
 
 # Fetch songs with spotify api
 class Pytifylib:
-    # Api url
-    url = 'https://api.spotify.com/v1/search?q=%s&type=%s'
-
     # hold songs
     _songs = {}
 
     # limit output songs
     _limit = 15
+
+    # spotify lib
+    _spotify = Spotify()
 
     # query
     def query(self, query):
@@ -31,20 +31,14 @@ class Pytifylib:
     # Search for song / album / artist
     def search(self, query, type='track,artist,album'):
         try:
-            search = '+'.join(query.split())
+            response = self._spotify.search(q='+'.join(query.split()), type=type)
 
-            try:
-                response = requests.get(self.url % (search, type))
-            except requests.exceptions.RequestException as e:
-                print(e)
-
-                sys.exit(1)
-
-            return response.json()
         except StandardError:
             print('Search went wrong? Please try again.')
 
             return False
+
+        return response
 
     def set_songs(self, data):
         for index, song in enumerate(data['tracks']['items']):

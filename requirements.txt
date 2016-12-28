@@ -2,3 +2,4 @@
 # pip install -r requirements.txt
 requests ~= 2.4.3
 prompt-toolkit == 1.0.0
+spotipy ~= 2.3.8
