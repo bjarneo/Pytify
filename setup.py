@@ -15,6 +15,7 @@ setup(
     keywords='spotify pytify song search curses',
     packages=find_packages(),
     install_requires=[
+        'requests ~= 2.4.3',
         'spotipy~=2.3.8',
         'prompt-toolkit==1.0.0'
     ],
