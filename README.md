@@ -55,7 +55,7 @@ $ pytify -p
 # play and pause song
 $ pytify -pp
 
-# Current playing song (linux only)
+# Current playing song
 $ pytify -c
 ```
 
@@ -63,7 +63,7 @@ Commands
 ![commands](http://i.imgur.com/r7pCYyH.png)
 ```
 Commands:
- current              print current song (currently linux only) 
+ current              print current song
  help                 list all commands 
  next                 play next song 
  pp                   play or pause song 

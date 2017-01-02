@@ -16,7 +16,7 @@ class Commander():
     def commands(self):
         return {
             'help': 'list all commands',
-            'current': 'print current song (currently linux only)',
+            'current': 'print current song',
             'next': 'play next song',
             'prev': 'play previous song',
             'pp': 'play or pause song',
