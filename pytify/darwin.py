@@ -50,3 +50,18 @@ class Darwin(Pytifylib):
 
     def pause(self):
         self._make_osascript_call('tell app "Spotify" to pause')
+
+    def get_current_playing(self):
+        instruction = ('on getCurrentTrack()\n'
+            ' tell application "Spotify"\n'
+            '  set currentArtist to artist of current track as string\n'
+            '  set currentTitle to name of current track as string\n'
+            '  return currentArtist & " - " & currentTitle\n'
+            ' end tell\n'
+            'end getCurrentTrack\n'
+            'getCurrentTrack()')
+        proc = subprocess.Popen(
+            ['osascript', '-e', instruction],
+            stdout=subprocess.PIPE)
+        out, err = proc.communicate()
+        return out.decode(sys.getfilesystemencoding())
