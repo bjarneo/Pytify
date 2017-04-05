@@ -8,6 +8,8 @@ Linux and OS X support.
 
 *Spotify must be running in the background in order to use this cli remote*
 
+<img src="logo.png" align="right" />
+
 Python 3 support. For Python 2 support use this release: [v2.1.0](https://github.com/bjarneo/Pytify/tree/v2.1.0)
 
 ![Image of terminal](http://i.imgur.com/P6Qsp8I.gif)
@@ -63,12 +65,12 @@ Commands
 ```
 Commands:
  current              print current song
- help                 list all commands 
- next                 play next song 
- pp                   play or pause song 
- stop                 stop 
- prev                 play previous song 
- history              last five search results 
+ help                 list all commands
+ next                 play next song
+ pp                   play or pause song
+ stop                 stop
+ prev                 play previous song
+ history              last five search results
 
 ```
 
