@@ -1,14 +1,14 @@
 Pytify
 =============
 
+<img src="logo.png" align="right" width="150" />
+
 [![Code Climate](https://codeclimate.com/github/bjarneo/Pytify/badges/gpa.svg)](https://codeclimate.com/github/bjarneo/Pytify)
 
 Search and start songs from the CLI.  
 Linux and OS X support.
 
 *Spotify must be running in the background in order to use this cli remote*
-
-<img src="logo.png" align="right" />
 
 Python 3 support. For Python 2 support use this release: [v2.1.0](https://github.com/bjarneo/Pytify/tree/v2.1.0)
 
