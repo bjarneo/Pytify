@@ -3,6 +3,8 @@ Pytify
 
 [![Code Climate](https://codeclimate.com/github/bjarneo/Pytify/badges/gpa.svg)](https://codeclimate.com/github/bjarneo/Pytify)
 
+![Pytify logo](https://github.com/bjarneo/Pytify/blob/master/logo.png?raw=true)
+
 Search and start songs from the CLI.  
 Linux and OS X support.
 
@@ -95,3 +97,7 @@ Contributions are appreciated.
 - [@wohlfea](https://github.com/wohlfea) - Made it compatible with python 3.5
 - [@ddiddi](https://github.com/ddiddi) - Added search phrase history browsing. (auto complete)
 - [@kmatt](https://github.com/kmatt) - Minor UX changes
+
+
+### Logo
+Logo by [theodorosploumis](https://github.com/theodorosploumis). Thank you very much!
