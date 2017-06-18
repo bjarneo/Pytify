@@ -16,7 +16,6 @@ class Pytifylib:
 
     # spotify lib
     client_credentials_manager = SpotifyClientCredentials()
-#    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     _spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
     # query
