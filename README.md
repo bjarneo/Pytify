@@ -26,6 +26,18 @@ $ # Example using apt-get
 $ apt-get install python-dbus
 ```
 
+## Credentials
+This package now must use credentials in order to search for songs. 
+
+Support for client credentials flow. Please follow these steps:
+
+1. Register app: https://developer.spotify.com/my-applications/#!/applications
+2. Edit your `~/.bashrc` to export following values:
+```bash
+export SPOTIPY_CLIENT_ID='your-spotify-client-id'
+export SPOTIPY_CLIENT_SECRET='your-spotify-client-secret'
+```
+
 ## Features
 * Commands
 * Auto suggest (based on history)
