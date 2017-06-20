@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 import sys
 import spotipy
 from pytify.history import history
+from spotipy.oauth2 import SpotifyClientCredentials
+
 
 
 # Fetch songs with spotify api
@@ -13,7 +15,8 @@ class Pytifylib:
     _limit = 15
 
     # spotify lib
-    _spotify = spotipy.Spotify()
+    client_credentials_manager = SpotifyClientCredentials()
+    _spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
     # query
     def query(self, query):
