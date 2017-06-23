@@ -109,7 +109,7 @@ Contributions are appreciated.
 - [@wohlfea](https://github.com/wohlfea) - Made it compatible with python 3.5
 - [@ddiddi](https://github.com/ddiddi) - Added search phrase history browsing. (auto complete)
 - [@kmatt](https://github.com/kmatt) - Minor UX changes
-
+- .... and other.. please add your name and code update!
 
 ### Logo
 Logo by [theodorosploumis](https://github.com/theodorosploumis). Thank you very much!
