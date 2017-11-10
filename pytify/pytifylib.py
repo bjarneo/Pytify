@@ -22,7 +22,7 @@ class Pytifylib:
         except spotipy.oauth2.SpotifyOauthError:
             print('Did not find Spotify credentials.')
 
-            print('Please visit https://github.com/bjarneo/pytify#credentials for more information')
+            print('Please visit https://github.com/bjarneo/pytify#credentials for more information.')
 
             sys.exit(1)
 
