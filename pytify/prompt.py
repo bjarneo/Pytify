@@ -30,11 +30,13 @@ def completer():
     return WordCompleter(set(list), ignore_case=True)
 
 
-def get_bottom_toolbar_tokens(cli):
-    return [
-        (Token.Toolbar, ' exit: ctrl+d | clear: ctrl+c ')
-    ]
+def get_bottom_toolbar_tokens(currentSong):
+    def toolbar(cli):
+        return [
+            (Token.Toolbar, ' exit: ctrl+d | clear: ctrl+c | song: %s' % currentSong)
+        ]
 
+    return toolbar
 
 def get_prompt_tokens(cli):
     return [
@@ -47,14 +49,14 @@ def get_prompt_tokens(cli):
     ]
 
 
-def custom_prompt():
+def custom_prompt(currentSong):
     return prompt(
         get_prompt_tokens=get_prompt_tokens,
         history=history(),
         auto_suggest=AutoSuggestFromHistory(),
         enable_history_search=True,
         on_abort=AbortAction.RETRY,
-        get_bottom_toolbar_tokens=get_bottom_toolbar_tokens,
+        get_bottom_toolbar_tokens=get_bottom_toolbar_tokens(currentSong),
         completer=completer(),
         complete_while_typing=True,
         style=style
