@@ -5,7 +5,6 @@ from pytify.history import history
 from spotipy.oauth2 import SpotifyClientCredentials
 
 
-
 # Fetch songs with spotify api
 class Pytifylib:
     # hold songs
@@ -14,9 +13,18 @@ class Pytifylib:
     # limit output songs
     _limit = 15
 
-    # spotify lib
-    client_credentials_manager = SpotifyClientCredentials()
-    _spotify = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    def _spotify(self):
+        return self.getCredentials()
+
+    def getCredentials(self):
+        try:
+            return spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+        except spotipy.oauth2.SpotifyOauthError:
+            print('Did not find Spotify credentials.')
+
+            print('Please visit https://github.com/bjarneo/pytify#credentials for more information.')
+
+            sys.exit(1)
 
     # query
     def query(self, query):
@@ -34,7 +42,7 @@ class Pytifylib:
     # Search for song / album / artist
     def search(self, query, type='track,artist,album'):
         try:
-            response = self._spotify.search(q='+'.join(query.split()), type=type)
+            response = self._spotify().search(q='+'.join(query.split()), type=type)
 
         except spotipy.client.SpotifyException:
             print('Search went wrong? Please try again.')
