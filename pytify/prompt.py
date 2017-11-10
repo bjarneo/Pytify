@@ -10,10 +10,10 @@ from pytify.history import history
 
 
 style = style_from_dict({
-    Token.Username:  'bg:#ffffff #81b71a italic',
+    Token.Username:  '#84bd00 italic',
     Token.At:        '#999999',
-    Token.Host:      '#81b71a',
-    Token.Separator: '#81b71a',
+    Token.Host:      '#84bd00',
+    Token.Separator: '#84bd00',
     Token.Text:      '#e6e6e6',
     Token.Arrow:     '#999999',
     Token.SelectedText: 'reverse underline',
