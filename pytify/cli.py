@@ -69,7 +69,7 @@ class App:
         )
 
         while 1:
-            search_input = custom_prompt()
+            search_input = custom_prompt(self.pytify.get_current_playing())
 
             if self.command.run(search_input):
                 continue
