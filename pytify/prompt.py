@@ -38,6 +38,7 @@ def get_bottom_toolbar_tokens(currentSong):
 
     return toolbar
 
+
 def get_prompt_tokens(cli):
     return [
         (Token.Username,  getpass.getuser()),
