@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "~=2.4.3"
+spotipy = "~=2.3.8"
+prompt_toolkit = "~=1.0.15"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
