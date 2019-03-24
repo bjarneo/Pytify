@@ -1,6 +1,7 @@
 Pytify
 =============
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
 [![Code Climate](https://codeclimate.com/github/bjarneo/Pytify/badges/gpa.svg)](https://codeclimate.com/github/bjarneo/Pytify)
 
 ![Pytify logo](https://github.com/bjarneo/Pytify/blob/master/logo.png?raw=true)
@@ -118,3 +119,8 @@ Contributions are appreciated.
 
 ### Logo
 Logo by [theodorosploumis](https://github.com/theodorosploumis). Thank you very much!
+
+## Donation
+If this project has been helpful in any way, and you want to treat me a cup of coffee, please donate :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
