@@ -2,6 +2,14 @@ from setuptools import setup, find_packages
 
 __version__ = '3.5.1'
 
+def get_install_requires():
+    install_requires = []
+
+    with open("requirements.txt", "r") as req_txt:
+        install_requires = map(lambda s: s.strip(), req_txt.readlines()[2:])
+        
+    return list(install_requires)
+
 setup(
     name='pytify',
     version=__version__,
@@ -14,11 +22,7 @@ setup(
     license='MIT',
     keywords='spotify pytify song search curses',
     packages=find_packages(),
-    install_requires=[
-        'requests ~= 2.4.3',
-        'spotipy~=2.3.8',
-        'prompt-toolkit~=1.0.15'
-    ],
+    install_requires=get_install_requires(),
     entry_points={
         'console_scripts': [
             'pytify=pytify.cli:main'
