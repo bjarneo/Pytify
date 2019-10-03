@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-__version__ = '3.6.1'
+__version__ = '3.6.2'
 
 def get_install_requires():
     install_requires = []
