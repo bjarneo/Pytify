@@ -1,5 +1,5 @@
 ### USAGE ###
 # pip install -r requirements.txt
 requests ~= 2.4.3
-prompt-toolkit ~= 1.0.15
+prompt-toolkit ~= 2.0.9
 spotipy ~= 2.3.8

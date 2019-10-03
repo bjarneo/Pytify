@@ -107,7 +107,8 @@ class Pytifylib:
     def print_history(self):
         print('\nLast ten entries from history:')
 
-        entries = history()
+        entries = history().load_history_strings()
+        entries = list(entries)
 
         qty = len(entries)
 
