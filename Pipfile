@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "~=2.4.3"
+requests = ">=2.22.0"
 spotipy = "~=2.3.8"
 prompt_toolkit = "~=2.0.9"
 
