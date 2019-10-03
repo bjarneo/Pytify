@@ -115,6 +115,7 @@ Contributions are appreciated.
 - [@wohlfea](https://github.com/wohlfea) - Made it compatible with python 3.5
 - [@ddiddi](https://github.com/ddiddi) - Added search phrase history browsing. (auto complete)
 - [@kmatt](https://github.com/kmatt) - Minor UX changes
+- [@bharath123](https://github.com/bharath-123) - Updated Pytify to use prompt_toolkit v2
 - .... and other.. please add your name and code update!
 
 ### Logo
