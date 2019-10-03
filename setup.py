@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 
-__version__ = '3.5.1'
+__version__ = '3.6.0'
 
 def get_install_requires():
     install_requires = []
 
     with open("requirements.txt", "r") as req_txt:
         install_requires = map(lambda s: s.strip(), req_txt.readlines()[2:])
-        
+
     return list(install_requires)
 
 setup(
