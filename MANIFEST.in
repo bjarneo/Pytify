@@ -1,0 +1,3 @@
+include requirements.txt
+recursive-include *.py
+prune build
