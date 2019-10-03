@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 requests = "~=2.4.3"
 spotipy = "~=2.3.8"
-prompt_toolkit = "~=1.0.15"
+prompt_toolkit = "~=2.0.9"
 
 [dev-packages]
 
