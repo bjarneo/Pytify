@@ -39,10 +39,10 @@ class Pytifylib:
 
             return False
 
-    # Search for song / album / artist
-    def search(self, query, type='track,artist,album'):
+    # Search for song / artist
+    def search(self, query, type='artist,track'):
         try:
-            response = self._spotify().search(q='+'.join(query.split()), type=type)
+            response = self._spotify().search(q='+'.join(query.split()), type=type, limit=self._limit)
 
         except spotipy.client.SpotifyException:
             print('Search went wrong? Please try again.')
