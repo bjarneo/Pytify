@@ -53,9 +53,6 @@ class Pytifylib:
 
     def set_songs(self, data):
         for index, song in enumerate(data['tracks']['items']):
-            if index == self._limit:
-                break
-
             artist_name = song['artists'][0]['name'][:25]
             song_name = song['name'][:30]
             album_name = song['album']['name'][:30]
