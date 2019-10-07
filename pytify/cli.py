@@ -73,7 +73,10 @@ class App:
                 search_input = custom_prompt(self.pytify.get_current_playing())
             except KeyboardInterrupt:
                 continue
-            
+            except EOFError:
+                print('\n Closing application...\n')
+                break
+
             if self.command.run(search_input):
                 continue
 
@@ -84,7 +87,4 @@ class App:
 
 
 def main():
-    try:
-        App()
-    except EOFError:
-        print('\n Closing application...\n')
+    App()
