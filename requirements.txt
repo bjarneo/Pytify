@@ -3,3 +3,4 @@
 requests >= 2.22.0
 prompt-toolkit ~= 2.0.9
 spotipy ~= 2.3.8
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
